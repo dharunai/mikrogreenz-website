@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Background -->
+  <rect width="200" height="200" fill="#f5f5dc" rx="40"/>
+  
+  <!-- Outer circle -->
+  <circle cx="100" cy="100" r="95" fill="none" stroke="#1a3a1a" stroke-width="4"/>
+  <circle cx="100" cy="100" r="88" fill="none" stroke="#7ba856" stroke-width="2"/>
+  
+  <!-- Inner circle -->
+  <circle cx="100" cy="100" r="72" fill="#f5f5dc" stroke="#1a3a1a" stroke-width="3"/>
+  
+  <!-- Leaf design in center -->
+  <g transform="translate(100, 100)">
+    <!-- Left leaf -->
+    <path d="M -15 -20 Q -25 0 -15 20 Q -5 15 -5 0 Q -5 -15 -15 -20" fill="#7ba856" stroke="#1a3a1a" stroke-width="1.5"/>
+    <!-- Right leaf -->
+    <path d="M 15 -20 Q 25 0 15 20 Q 5 15 5 0 Q 5 -15 15 -20" fill="#7ba856" stroke="#1a3a1a" stroke-width="1.5"/>
+    <!-- Center vein -->
+    <line x1="0" y1="-20" x2="0" y2="20" stroke="#1a3a1a" stroke-width="1"/>
+  </g>
+  
+  <!-- Year circles and text -->
+  <circle cx="45" cy="100" r="12" fill="#1a3a1a"/>
+  <text x="45" y="107" font-size="16" font-weight="bold" fill="#f5f5dc" text-anchor="middle">20</text>
+  
+  <circle cx="155" cy="100" r="12" fill="#1a3a1a"/>
+  <text x="155" y="107" font-size="16" font-weight="bold" fill="#f5f5dc" text-anchor="middle">25</text>
+  
+  <!-- Top text arc -->
+  <defs>
+    <path id="topArc" d="M 50,100 A 50,50 0 0,1 150,100" fill="none"/>
+  </defs>
+  <text font-size="14" font-weight="bold" fill="#1a3a1a" letter-spacing="2">
+    <textPath href="#topArc" startOffset="50%" text-anchor="middle">
+      MIKROGREENZ
+    </textPath>
+  </text>
+  
+  <!-- Bottom text arc -->
+  <defs>
+    <path id="bottomArc" d="M 150,100 A 50,50 0 0,1 50,100" fill="none"/>
+  </defs>
+  <text font-size="14" font-weight="bold" fill="#1a3a1a" letter-spacing="2">
+    <textPath href="#bottomArc" startOffset="50%" text-anchor="middle">
+      GLOBAL
+    </textPath>
+  </text>
+</svg>
+

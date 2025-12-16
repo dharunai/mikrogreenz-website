@@ -1,0 +1,199 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* MikroGreenz Premium Brand Palette */
+    /* Rich Forest Green Primary */
+    --primary: 146 65% 25%;
+    --primary-foreground: 60 30% 96%;
+    --primary-light: 146 40% 45%;
+    --primary-dark: 146 70% 15%;
+    --primary-hover: 146 55% 35%;
+
+    /* Warm Organic Backgrounds */
+    --background: 60 20% 98%;
+    /* Soft Cream */
+    --foreground: 146 60% 10%;
+    /* Dark Green-Black */
+
+    --card: 0 0% 100%;
+    --card-foreground: 146 60% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 146 60% 10%;
+
+    /* Accents */
+    --secondary: 85 50% 90%;
+    /* Pale Leaf Green */
+    --secondary-foreground: 146 60% 15%;
+
+    --muted: 85 20% 94%;
+    --muted-foreground: 146 20% 40%;
+
+    --accent: 35 60% 96%;
+    /* Warm Highlight */
+    --accent-foreground: 146 60% 15%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 146 20% 90%;
+    --input: 146 20% 90%;
+    --ring: 146 65% 25%;
+
+    --radius: 1rem;
+
+    /* Custom Design Tokens */
+    --shadow-soft: 0 10px 40px -10px rgba(22, 60, 30, 0.08);
+    --shadow-medium: 0 20px 40px -12px rgba(22, 60, 30, 0.15);
+    --transition-smooth: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+    --gradient-hero: linear-gradient(135deg, hsl(146, 65%, 25%), hsl(146, 40%, 45%));
+    --gradient-subtle: linear-gradient(180deg, hsl(60, 20%, 98%) 0%, hsl(85, 30%, 96%) 100%);
+    --gradient-glass: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.6));
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 146 50% 5%;
+    --foreground: 60 10% 96%;
+
+    --card: 146 40% 8%;
+    --card-foreground: 60 10% 96%;
+
+    --popover: 146 40% 8%;
+    --popover-foreground: 60 10% 96%;
+
+    --primary: 146 50% 45%;
+    --primary-foreground: 146 60% 5%;
+
+    --secondary: 146 30% 15%;
+    --secondary-foreground: 60 10% 96%;
+
+    --muted: 146 30% 15%;
+    --muted-foreground: 146 20% 65%;
+
+    --accent: 146 30% 15%;
+    --accent-foreground: 60 10% 96%;
+
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 60 10% 96%;
+
+    --border: 146 30% 15%;
+    --input: 146 30% 15%;
+    --ring: 146 50% 45%;
+  }
+}
+
+@layer utilities {
+  .glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+  }
+
+  .glass-dark {
+    background: rgba(10, 30, 15, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+}
+
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-family: 'Open Sans', system-ui, -apple-system, sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+    font-weight: 600;
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0px) rotate(0deg);
+      opacity: 0.3;
+    }
+
+    25% {
+      transform: translateY(-20px) rotate(5deg);
+      opacity: 0.5;
+    }
+
+    50% {
+      transform: translateY(-10px) rotate(-3deg);
+      opacity: 0.4;
+    }
+
+    75% {
+      transform: translateY(-15px) rotate(3deg);
+      opacity: 0.5;
+    }
+  }
+
+  .scroll-smooth {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+}
