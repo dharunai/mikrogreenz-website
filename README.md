@@ -4,6 +4,28 @@
 
 **URL**: https://lovable.dev/projects/b82017c1-d1e1-452d-b9c7-06b2f5f4d6be
 
+## Remote Access
+
+This project now includes a **Remote Access Gate** feature that requires an access code to view the website.
+
+### Access Code
+**Current Access Code:** `1F71-EFA5`
+
+When you visit the website, you'll be prompted to enter this access code before you can access the content.
+
+### Configuration
+To manage the remote access feature, edit the configuration file:
+```
+src/config/remoteAccess.ts
+```
+
+You can:
+- Change the access code
+- Enable/disable the access gate
+- Modify session duration
+
+For more detailed remote access and deployment options, see [REMOTE_ACCESS.md](./REMOTE_ACCESS.md).
+
 ## How can I edit this code?
 
 There are several ways of editing your application.
