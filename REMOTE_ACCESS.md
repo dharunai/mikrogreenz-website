@@ -10,6 +10,20 @@ The website is now protected with a **Remote Access Gate** that requires an acce
 
 When you visit the website (via any method below), you'll be prompted to enter this code before accessing the content. The authentication persists in your browser's localStorage until you logout or clear browser data.
 
+### Security Note
+
+**Important:** This is a client-side authentication mechanism intended for development and preview environments. The access code is embedded in the JavaScript bundle and can be discovered by inspecting the source code. 
+
+This provides basic access control for:
+- Sharing development previews with stakeholders
+- Protecting work-in-progress from casual discovery
+- Demonstrating auth concepts
+
+**For production environments with sensitive content**, consider:
+- Server-side authentication (OAuth, JWT)
+- Platform-specific features (Vercel Password Protection, Netlify Identity)
+- Environment-based configuration (disable gate in production)
+
 ### Managing Access Code
 
 To change the access code or disable the gate:
