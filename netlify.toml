@@ -1,0 +1,67 @@
+# Netlify Configuration File
+
+[build]
+  # Build command
+  command = "npm run build"
+  
+  # Directory to publish
+  publish = "dist"
+  
+  # Functions directory (if using Netlify Functions)
+  # functions = "netlify/functions"
+
+[build.environment]
+  # Node version
+  NODE_VERSION = "18"
+
+# Redirect rules
+[[redirects]]
+  # Single Page Application (SPA) redirect
+  # Redirect all routes to index.html for client-side routing
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Headers for security and caching
+[[headers]]
+  # Apply to all routes
+  for = "/*"
+  [headers.values]
+    # Security headers
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    
+    # CORS headers (adjust as needed)
+    Access-Control-Allow-Origin = "*"
+
+[[headers]]
+  # Cache static assets for 1 year
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  # Cache images for 1 month
+  for = "*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+[[headers]]
+  for = "*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+# Environment variables (sensitive values should be set in Netlify UI)
+# [context.production.environment]
+#   VITE_SUPABASE_URL = "your-production-supabase-url"
+#   VITE_SUPABASE_PUBLISHABLE_KEY = "your-production-key"
+
+# Deploy Preview settings
+[context.deploy-preview]
+  command = "npm run build"
+
+# Branch Deploy settings
+[context.branch-deploy]
+  command = "npm run build"
