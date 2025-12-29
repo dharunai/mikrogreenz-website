@@ -1,10 +1,11 @@
 import { useState, useRef, useEffect } from "react";
-import { Send } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -41,32 +42,43 @@ const Contact = () => {
     };
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const subject = `New Contact Inquiry from ${formData.name}`;
-    const body = `
-Name: ${formData.name}
-Email: ${formData.email}
-Phone: ${formData.phone}
-City: ${formData.city}
+    try {
+      const { error } = await supabase.functions.invoke("contact", {
+        body: {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          city: formData.city,
+          country: formData.country,
+          message: formData.message,
+        },
+      });
 
-Message:
-${formData.message}
-    `;
+      if (error) {
+        throw error;
+      }
 
-    const mailtoLink = `mailto:mikrogreenz.global@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      toast({
+        title: "Message sent",
+        description: "Thanks! We received your inquiry and will get back to you soon.",
+      });
 
-    window.location.href = mailtoLink;
+      setFormData({ name: "", email: "", phone: "", city: "", country: "", message: "" });
+    } catch (err) {
+      const description = err instanceof Error ? err.message : "Please try again in a moment.";
 
-    toast({
-      title: "Opening Mail Client",
-      description: "Please send the drafted email to complete your inquiry.",
-    });
-
-    setIsSubmitting(false);
-    setFormData({ name: "", email: "", phone: "", city: "", country: "", message: "" });
+      toast({
+        title: "Could not send message",
+        description,
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -182,7 +194,7 @@ ${formData.message}
                       className="w-full bg-primary hover:bg-primary-hover text-white h-11 text-lg font-bold rounded-xl shadow-lg shadow-primary/25 transition-all hover:scale-[1.01]"
                     >
                       {isSubmitting ? "Submitting..." : "Submit"}
-                      <Send className="ml-2 w-5 h-5" />
+                      <ArrowRight className="ml-2 w-5 h-5" />
                     </Button>
                   </form>
                 </CardContent>
