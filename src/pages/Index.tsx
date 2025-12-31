@@ -3,7 +3,7 @@ import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Team from "@/components/Team";
 import WhatAreMicrogreens from "@/components/WhatAreMicrogreens";
-import HealthBenefits from "@/components/HealthBenefits";
+
 import Products from "@/components/Products";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import IndustryApplications from "@/components/IndustryApplications";
@@ -22,7 +22,7 @@ const Index = () => {
       <About />
       <Team />
       <WhatAreMicrogreens />
-      <HealthBenefits />
+
       <Products />
       <WhyChooseUs />
       <IndustryApplications />
