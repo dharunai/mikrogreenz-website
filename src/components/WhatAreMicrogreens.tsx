@@ -1,8 +1,6 @@
+
 import { useEffect, useState, useRef } from "react";
-import { Leaf } from "lucide-react";
-import leaf1 from "@/assets/generated/leaf1.png";
-import leaf2 from "@/assets/generated/leaf2.png";
-import leaf3 from "@/assets/generated/leaf3.png";
+import { Button } from "@/components/ui/button";
 
 const WhatAreMicrogreens = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -32,162 +30,106 @@ const WhatAreMicrogreens = () => {
   return (
     <section
       ref={sectionRef}
-      className="py-16 md:py-20 bg-gradient-to-b from-background via-secondary/10 to-background relative overflow-hidden"
+      className="py-24 md:py-32 bg-gradient-to-br from-white to-[#F0FDF4] relative overflow-hidden"
     >
-      {/* Floating Background Elements */}
-
+      {/* Dynamic Background Elements */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
+        <div className="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] bg-[#BBF7D0] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse-slow"></div>
+        <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-[#86EFAC] rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-pulse-slow delay-1000"></div>
+        <div className="absolute top-[20%] right-[20%] w-[300px] h-[300px] bg-[#DCFCE7] rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-pulse-slow delay-2000"></div>
+      </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-5xl mx-auto">
-          {/* Header */}
-          <div
-            className="text-center mb-12"
-            style={{
-              opacity: isVisible ? 1 : 0,
-              transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
-              transition: 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
-            }}
-          >
-            <div className="inline-flex items-center gap-2 mb-4 px-3 py-1.5 bg-primary/10 rounded-full border border-primary/20">
-              <Leaf className="w-3.5 h-3.5 text-primary" />
-              <span className="text-xs font-semibold text-primary uppercase tracking-wider">Discover Microgreens</span>
+        <div className="relative flex flex-col items-center">
+
+          {/* Main Content Layout */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-8 items-center w-full max-w-7xl">
+
+            {/* Left Content - Glass Card */}
+            <div className={`relative z-20 order-2 lg:order-1 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+              <div className="backdrop-blur-md bg-white/40 border border-white/50 rounded-2xl p-8 md:p-12 shadow-xl hover:shadow-2xl transition-shadow duration-300">
+                <span className="inline-block py-1 px-3 rounded-full bg-[#15803d]/10 text-[#15803d] font-semibold text-sm mb-4">
+                  Fresh & Nutritious
+                </span>
+                <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[#14532d] leading-tight">
+                  What Are <br />
+                  <span className="text-[#16a34a]">Microgreens?</span>
+                </h2>
+                <p className="text-gray-700 leading-relaxed text-lg mb-8">
+                  Microgreens are young seedlings of edible vegetables and herbs, harvested just after the first leaves emerge. These tiny greens are known for their <span className="font-semibold text-[#15803d]">concentrated nutrients</span> and intense flavors.
+                </p>
+                <div className="flex flex-col gap-4">
+                  <div className="flex items-start gap-3">
+                    <div className="w-10 h-10 rounded-full bg-[#dcfce7] flex items-center justify-center text-[#15803d] font-bold shrink-0">1</div>
+                    <div>
+                      <h4 className="font-bold text-[#14532d]">Nutrient Dense</h4>
+                      <p className="text-sm text-gray-600">Up to 40x more nutrients than mature plants.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <div className="w-10 h-10 rounded-full bg-[#dcfce7] flex items-center justify-center text-[#15803d] font-bold shrink-0">2</div>
+                    <div>
+                      <h4 className="font-bold text-[#14532d]">Flavor Packed</h4>
+                      <p className="text-sm text-gray-600">Intense aromatic flavors to elevate any dish.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <h2 className="text-3xl md:text-5xl font-heading font-bold text-foreground mb-4">
-              What Are <span className="bg-gradient-to-r from-primary via-primary-light to-primary bg-clip-text text-transparent">Microgreens?</span>
-            </h2>
+            {/* Visual Centerpiece - Floating Images */}
+            <div className={`relative z-10 order-1 lg:order-2 flex justify-center items-center h-[500px] w-full transition-opacity duration-1000 delay-300 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
 
-            <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Microgreens are <span className="text-primary font-semibold">young vegetable seedlings</span> harvested 7-14 days after germination.
-              Despite their small size, they pack an <span className="text-primary font-semibold">incredible nutritional punch</span>—up to 40 times more nutrients than their mature counterparts.
-            </p>
+              {/* Abstract Circle decorations */}
+              <div className="absolute w-[400px] h-[400px] border-2 border-[#16a34a]/10 rounded-full animate-spin-slow"></div>
+              <div className="absolute w-[500px] h-[500px] border border-[#16a34a]/5 rounded-full animate-pulse-slow"></div>
 
-            {/* Decorative Line */}
-            <div className="flex items-center justify-center gap-3 mt-6">
-              <div className="h-px w-16 bg-gradient-to-r from-transparent to-primary/50" />
-              <Leaf className="w-3.5 h-3.5 text-primary" />
-              <div className="h-px w-16 bg-gradient-to-l from-transparent to-primary/50" />
+              {/* Main Images */}
+              <div className="relative w-full h-full">
+                <img
+                  src="/images/microgreens/sunflower.png"
+                  alt="Sunflower Microgreen"
+                  className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 md:w-[450px] object-contain drop-shadow-2xl animate-float z-20"
+                  style={{ animationDelay: '0s' }}
+                />
+                <img
+                  src="/images/microgreens/red_amaranth.png"
+                  alt="Red Amaranth Microgreen"
+                  className="absolute top-[10%] right-[0%] lg:right-[-10%] w-48 md:w-64 object-contain drop-shadow-xl animate-float z-10 blur-[1px]"
+                  style={{ animationDelay: '2s' }}
+                />
+                {/* Decorative Leaf/Element */}
+                <div className="absolute bottom-[10%] left-[0%] lg:left-[-5%] w-32 h-32 bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg border border-white/40 animate-float" style={{ animationDelay: '1.5s' }}>
+                  <div className="text-center">
+                    <span className="block text-2xl font-bold text-[#15803d]">100%</span>
+                    <span className="text-xs font-semibold text-[#16a34a] uppercase tracking-wider">Organic</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Bottom Section - Why Microgreens */}
+          <div className={`mt-24 w-full max-w-4xl mx-auto text-center transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <div className="relative p-1">
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#16a34a]/20 to-transparent rounded-xl blur-xl"></div>
+              <div className="relative bg-white/60 backdrop-blur-xl border border-white/60 rounded-xl p-8 md:p-12 shadow-2xl">
+                <h3 className="text-3xl font-bold mb-6 text-[#14532d]">Why Choose Microgreens?</h3>
+                <p className="text-gray-700 text-lg leading-relaxed mb-8">
+                  Microgreens are more than just a garnish. They are a powerhouse of nutrition, packed with essential vitamins, minerals, and antioxidants that can elevate your health. They support immune function and enhance overall wellness, making them a vital addition to any diet.
+                </p>
+                <Button size="lg" className="bg-[#16a34a] hover:bg-[#15803d] text-white font-bold px-8 shadow-lg hover:shadow-[#16a34a]/50 transition-all rounded-full h-12">
+                  Start Your Journey
+                </Button>
+              </div>
             </div>
           </div>
 
-
         </div>
       </div>
-
-      {/* Full-Width Marquee Scroll Section */}
-      <div
-        className="mt-12 overflow-hidden"
-        style={{
-          opacity: isVisible ? 1 : 0,
-          transition: 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
-          transitionDelay: '900ms',
-        }}
-      >
-        <div className="relative py-6 bg-gradient-to-r from-primary/5 via-primary-light/10 to-primary/5 border-y border-primary/20">
-          {/* Gradient Overlays for fade effect */}
-          <div className="absolute left-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-r from-background to-transparent z-10" />
-          <div className="absolute right-0 top-0 bottom-0 w-20 md:w-32 bg-gradient-to-l from-background to-transparent z-10" />
-
-          {/* Marquee Container */}
-          <div className="marquee-container">
-            <div className="marquee-content will-change-transform">
-              {/* First set of items */}
-              {[
-                "40× More Nutrients",
-                "7-14 Days Growth",
-                "95% Less Water",
-                "Zero Chemicals",
-                "Year-Round Availability",
-                "Vertical Stacking",
-                "Chemical-Free",
-                "Sustainable Farming",
-                "Nutrient Dense",
-                "Fast Harvest"
-              ].map((item, index) => (
-                <div key={`first-${index}`} className="marquee-item">
-                  <span className="text-base md:text-lg font-semibold text-primary">{item}</span>
-                  <img src={[leaf1, leaf2, leaf3][index % 3]} alt="leaf" className="w-6 h-6 object-contain opacity-80" />
-                </div>
-              ))}
-
-              {/* Duplicate set for seamless loop */}
-              {[
-                "40× More Nutrients",
-                "7-14 Days Growth",
-                "95% Less Water",
-                "Zero Chemicals",
-                "Year-Round Availability",
-                "Vertical Stacking",
-                "Chemical-Free",
-                "Sustainable Farming",
-                "Nutrient Dense",
-                "Fast Harvest"
-              ].map((item, index) => (
-                <div key={`second-${index}`} className="marquee-item">
-                  <span className="text-base md:text-lg font-semibold text-primary">{item}</span>
-                  <img src={[leaf1, leaf2, leaf3][index % 3]} alt="leaf" className="w-6 h-6 object-contain opacity-80" />
-                </div>
-              ))}
-
-              {/* Triple set for wide screens to ensure no gaps */}
-              {[
-                "40× More Nutrients",
-                "7-14 Days Growth",
-                "95% Less Water",
-                "Zero Chemicals",
-                "Year-Round Availability",
-                "Vertical Stacking",
-                "Chemical-Free",
-                "Sustainable Farming",
-                "Nutrient Dense",
-                "Fast Harvest"
-              ].map((item, index) => (
-                <div key={`third-${index}`} className="marquee-item">
-                  <span className="text-base md:text-lg font-semibold text-primary">{item}</span>
-                  <img src={[leaf1, leaf2, leaf3][index % 3]} alt="leaf" className="w-6 h-6 object-contain opacity-80" />
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Marquee Styles */}
-      <style>{`
-        .marquee-container {
-          overflow: hidden;
-          white-space: nowrap;
-        }
-        
-        .marquee-content {
-          display: inline-flex;
-          animation: marquee 20s linear infinite;
-        }
-        
-        .marquee-item {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.75rem;
-          padding: 0 1.5rem;
-          white-space: nowrap;
-        }
-        
-        @keyframes marquee {
-          0% {
-            transform: translateX(0);
-          }
-          100% {
-            transform: translateX(-33.33%);
-          }
-        }
-        
-        .marquee-container:hover .marquee-content {
-          animation-play-state: paused;
-        }
-      `}</style>
     </section>
   );
 };
 
 export default WhatAreMicrogreens;
-

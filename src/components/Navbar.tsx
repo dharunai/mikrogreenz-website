@@ -3,9 +3,13 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo.jpg";
 
+import { useNavigate, useLocation } from "react-router-dom";
+
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,8 +19,27 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
+  const scrollToSection = (item: any) => {
+    if (item.type === 'page') {
+      navigate(item.path);
+      setIsMobileMenuOpen(false);
+      return;
+    }
+
+    if (location.pathname !== '/') {
+      navigate('/');
+      // Wait for navigation then scroll
+      setTimeout(() => {
+        const element = document.getElementById(item.id);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+      setIsMobileMenuOpen(false);
+      return;
+    }
+
+    const element = document.getElementById(item.id);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
       setIsMobileMenuOpen(false);
@@ -28,6 +51,7 @@ const Navbar = () => {
     { label: "About", id: "about" },
     { label: "Products", id: "products" },
     { label: "Benefits", id: "benefits" },
+    { label: "Research", id: "research", type: "page", path: "/research" },
     { label: "Industries", id: "industries" },
     { label: "Contact", id: "contact" },
   ];
@@ -40,7 +64,7 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <button
-            onClick={() => scrollToSection("home")}
+            onClick={() => scrollToSection({ id: "home", label: "Home" })}
             className="flex items-center gap-3 hover:opacity-80 transition-opacity"
           >
             <img
@@ -59,7 +83,7 @@ const Navbar = () => {
             {navLinks.map((link) => (
               <button
                 key={link.id}
-                onClick={() => scrollToSection(link.id)}
+                onClick={() => scrollToSection(link)}
                 className="text-foreground hover:text-primary transition-colors font-medium"
               >
                 {link.label}
@@ -97,7 +121,7 @@ const Navbar = () => {
             {navLinks.map((link) => (
               <button
                 key={link.id}
-                onClick={() => scrollToSection(link.id)}
+                onClick={() => scrollToSection(link)}
                 className="block w-full text-left px-4 py-2 text-foreground hover:bg-accent rounded transition-colors"
               >
                 {link.label}

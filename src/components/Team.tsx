@@ -42,16 +42,16 @@ const Team = () => {
             leafDelay: "0s"
         },
         {
-            name: "Ashwathi",
-            role: "COO / Business Development",
-            description: "House Maker & Biotechnologist. Dedicated to expanding our green footprint and ensuring excellence in every harvest.",
-            image: "/images/team/ashwathi-coo.jpg",
+            name: "Varun Karthik Ram",
+            role: "Business Strategist",
+            description: "5+ years experience as Senior Business Analyst in big MNC, Micro Greens Certified Instructor.",
+            image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=2787&auto=format&fit=crop", // Placeholder image
             socials: {
                 linkedin: "#",
                 twitter: "#",
                 email: "#"
             },
-            leafDelay: "1s"
+            leafDelay: "0s"
         }
     ];
 
@@ -140,7 +140,7 @@ const Team = () => {
                                             <Leaf className="w-6 h-6 text-white" />
                                         </div>
 
-                                        <h3 className="text-2xl font-bold text-foreground mb-1 group-hover:text-primary transition-colors duration-300">
+                                        <h3 className="text-xl font-bold text-foreground mb-1 group-hover:text-primary transition-colors duration-300">
                                             {member.name}
                                         </h3>
                                         <p className="text-primary font-medium mb-4">{member.role}</p>

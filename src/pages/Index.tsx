@@ -12,6 +12,7 @@ import Partnership from "@/components/Partnership";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import ChatBot from "@/components/ChatBot";
+import FAQ from "@/components/FAQ";
 
 const Index = () => {
   return (
@@ -27,6 +28,7 @@ const Index = () => {
       <IndustryApplications />
       <Feedback />
       <Partnership />
+      <FAQ />
       <Contact />
       <Footer />
       <ChatBot />
