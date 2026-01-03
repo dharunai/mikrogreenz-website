@@ -19,6 +19,7 @@ const Contact = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -63,11 +64,8 @@ const Contact = () => {
           variant: "default",
         });
       } else {
-        // 3. UI Success Feedback
-        toast({
-          title: "Message Sent Successfully",
-          description: "Thank you for reaching out! We will be in touch soon.",
-        });
+        // 3. UI Success Feedback - Show Splash Modal
+        setShowSuccess(true);
       }
 
       setFormData({ name: "", email: "", phone: "", city: "", country: "", message: "" });
@@ -82,6 +80,48 @@ const Contact = () => {
       setIsSubmitting(false);
     }
   };
+
+  const SuccessModal = () => (
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+      {/* Backdrop */}
+      <div
+        className="absolute inset-0 bg-primary/20 animate-backdrop-in"
+        onClick={() => setShowSuccess(false)}
+      />
+
+      {/* Modal Content */}
+      <Card className="relative w-full max-w-lg bg-white overflow-hidden rounded-[2.5rem] shadow-[0_32px_64px_-12px_rgba(22,60,30,0.3)] border-none animate-splash-in">
+        <div className="absolute top-0 left-0 w-full h-2 bg-primary" />
+
+        <CardContent className="p-12 text-center space-y-8">
+          <div className="space-y-4">
+            <h3 className="text-4xl md:text-5xl font-heading font-extrabold text-primary leading-tight">
+              Message <br />
+              <span className="text-foreground">Sent</span>
+            </h3>
+            <div className="w-16 h-1 bg-primary/20 mx-auto rounded-full" />
+          </div>
+
+          <p className="text-xl text-muted-foreground leading-relaxed font-medium">
+            Thank you for reaching out to <span className="text-primary font-bold">MikroGreenz</span>.
+            A confirmation email is on its way, and our team will be in touch shortly.
+          </p>
+
+          <Button
+            onClick={() => setShowSuccess(false)}
+            size="lg"
+            className="w-full bg-primary hover:bg-primary-hover text-white h-14 text-xl font-bold rounded-2xl shadow-xl shadow-primary/20 transition-all active:scale-95 py-8"
+          >
+            Wonderful
+          </Button>
+        </CardContent>
+
+        {/* Decorative corner blobs */}
+        <div className="absolute -bottom-8 -right-8 w-32 h-32 bg-primary/5 rounded-full blur-2xl pointer-events-none" />
+        <div className="absolute -top-8 -left-8 w-32 h-32 bg-secondary/20 rounded-full blur-2xl pointer-events-none" />
+      </Card>
+    </div>
+  );
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -223,6 +263,7 @@ const Contact = () => {
           </div>
         </div>
       </div>
+      {showSuccess && <SuccessModal />}
     </section>
   );
 };
