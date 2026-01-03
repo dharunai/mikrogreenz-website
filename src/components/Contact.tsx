@@ -206,7 +206,7 @@ const Contact = () => {
                   style={{ border: 0, minHeight: '100%' }}
                   loading="lazy"
                   allowFullScreen
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d124409.77124314746!2d80.14902167448253!3d13.047537380126756!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5265ea4f7d3361%3A0x6e61a70b6863d433!2sChennai%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1709400000000!5m2!1sen!2sin"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.5718512318595!2d76.94637107584003!3d10.995654255110129!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba859a6a8d8fb5f%3A0xf857a7b3ad723df3!2sMikrogreenz%20Global!5e0!3m2!1sen!2sin!4v1767418297419!5m2!1sen!2sin"
                   className="grayscale group-hover:grayscale-0 transition-all duration-700 w-full h-full object-cover"
                 ></iframe>
                 {/* Overlay on hover to indicate interactivity */}
