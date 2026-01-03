@@ -79,8 +79,26 @@ serve(async (req) => {
       // User Confirmation
       sendEmail(
         email,
-        "Thank you for contacting MikroGreenz",
-        `<p>Hi ${escapeHtml(name.split(" ")[0])},</p><p>We received your inquiry and will get back to you shortly.</p><p>Best,<br/>Team MikroGreenz</p>`
+        "Thank you for contacting Mikrogreenz Global",
+        `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; color: #333;">
+          <p style="font-size: 16px; margin-bottom: 16px;">Hi ${escapeHtml(name.split(" ")[0])},</p>
+          
+          <p style="font-size: 16px; margin-bottom: 16px;">Thank you for contacting <strong>Mikrogreenz Global</strong> 🌱</p>
+          
+          <p style="font-size: 16px; margin-bottom: 16px;">We've received your enquiry and our team will get back to you shortly.</p>
+          
+          <div style="background-color: #f0fdf4; border-left: 4px solid #16a34a; padding: 16px; margin: 24px 0; border-radius: 4px;">
+            <p style="margin: 0; font-size: 14px; color: #15803d;"><strong>Your message:</strong></p>
+            <p style="margin: 8px 0 0 0; font-size: 14px; color: #14532d; font-style: italic;">"${escapeHtml(message)}"</p>
+          </div>
+          
+          <p style="font-size: 14px; margin-bottom: 16px; color: #666;">If your enquiry is urgent, feel free to contact us at <strong style="color: #16a34a;">+91 82203 33477</strong>.</p>
+          
+          <p style="font-size: 16px; margin-top: 24px;">Warm regards,<br/>
+          <strong style="color: #16a34a;">Team Mikrogreenz Global</strong></p>
+        </div>
+        `
       )
     ]);
 
