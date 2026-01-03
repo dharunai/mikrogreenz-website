@@ -1,121 +1,163 @@
-﻿# Mikro Greenz Global
+🌱 MikroGreenz Global – Official Website
 
-# Welcome to your Lovable project
+MikroGreenz Global is pioneering the future of nutrition through GMP-certified microgreens, proprietary cultivation technology, and sustainable urban farming solutions designed for B2B partnerships.
 
-## Project info
+This repository contains the source code for the official MikroGreenz Global website.
 
-**URL**: https://lovable.dev/projects/b82017c1-d1e1-452d-b9c7-06b2f5f4d6be
+🚀 Project Overview
 
-## How can I edit this code?
+Brand: MikroGreenz Global
 
-There are several ways of editing your application.
+Focus: B2B Microgreens, Partnerships, Sustainable Nutrition
 
-**Use Lovable**
+Industry: AgriTech · FoodTech · Health & Wellness
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/b82017c1-d1e1-452d-b9c7-06b2f5f4d6be) and start prompting.
+Website Type: Static frontend with backend integrations
 
-Changes made via Lovable will be committed automatically to this repo.
+Deployment: Hostinger (GitHub-based deployment)
 
-**Use your preferred IDE**
+🧩 Tech Stack
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Frontend
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+Vite
 
-### Running on locked-down / no-admin PCs (Portable Node)
+React + TypeScript
 
-If you can't install Node.js via MSI (office-managed device), you can use the official **Windows ZIP** distribution instead.
+HTML5 / CSS3
 
-1) Download **Node.js LTS** for Windows as a **.zip** (not .msi)
-2) Extract it to one of these locations:
-	- Recommended for this repo: `tools/node/` (so the path becomes `tools/node/node.exe`)
-	- Or anywhere you can write to (e.g. `C:\Users\<you>\Tools\node\node-vXX-win-x64\`)
-3) Run the dev server:
+Google Fonts (Poppins, Open Sans)
 
-```powershell
-./scripts/run-dev.ps1
+Backend & Services
 
-# OR, if you extracted Node somewhere else:
-./scripts/run-dev.ps1 -NodeHome "C:\Users\<you>\Tools\node\node-vXX-win-x64"
-```
+Supabase (Database & Edge Functions)
 
-To build and preview:
+Supabase Edge Functions (Contact form automation)
 
-```powershell
-./scripts/run-build.ps1
-```
+Resend (Email notifications)
 
-Follow these steps:
+Hosting & Infrastructure
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+Hostinger (Static Hosting + GitHub integration)
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+GoDaddy (Domain provider)
 
-# Step 3: Install the necessary dependencies.
-npm i
+✨ Key Features
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+⚡ Fast, lightweight Vite-based frontend
+
+📩 Contact form with Supabase database storage
+
+✉️ Automated email notifications (Admin + User)
+
+🔐 Secure environment variable handling
+
+📈 SEO-optimized metadata (B2B & partnership focused)
+
+🌍 Scalable architecture for future features
+
+📁 Project Structure
+mikrogreenz-website/
+├── public/
+│   ├── favicon.svg
+│   └── assets/
+├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── styles/
+│   ├── main.tsx
+│   └── App.tsx
+├── index.html
+├── package.json
+├── vite.config.ts
+└── README.md
+
+🔐 Environment Variables
+
+This project uses environment variables for frontend configuration.
+
+Create a .env file (or configure via Hostinger):
+
+VITE_SUPABASE_URL=https://your-project-id.supabase.co
+VITE_SUPABASE_ANON_KEY=your-public-anon-key
+
+
+⚠️ Important
+
+Only variables prefixed with VITE_ are exposed to the frontend
+
+Sensitive keys (service role, email API keys) are stored only in Supabase
+
+🛠️ Local Development
+1️⃣ Install dependencies
+npm install
+
+2️⃣ Start development server
 npm run dev
-```
 
-**Edit a file directly in GitHub**
+3️⃣ Build for production
+npm run build
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+🌐 Deployment Workflow
 
-**Use GitHub Codespaces**
+Push changes to the main branch
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Hostinger automatically:
 
-## What technologies are used for this project?
+Pulls code from GitHub
 
-This project is built with:
+Injects environment variables
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Builds the project
 
-## Contact form (stays on-site + sends to your email)
+Deploys to production
 
-The Contact section submits **without opening a mail app** and sends the message to your inbox via a Supabase Edge Function:
+Domain mapped via Hostinger DNS
 
-- Frontend calls the Edge Function named `contact`
-- The Edge Function sends an email using **Resend** (configured via env vars)
+Free SSL enabled
 
-### Required Supabase Edge Function env vars
+🔍 SEO & Metadata
 
-- `RESEND_API_KEY`
-- `CONTACT_FROM_EMAIL` (must be a verified Resend sender, e.g. `MikroGreenz <noreply@yourdomain.com>`)
-- `CONTACT_TO_EMAIL` (optional, defaults to `mikrogreenz.global@gmail.com`)
+B2B-focused meta title & description
 
-### Deploying the function
+Open Graph & Twitter Card support
 
-From your Supabase project / CLI:
+Optimized for partnership & industry searches
 
-```sh
-supabase functions deploy contact
-```
+Google indexing enabled
 
-Then set the env vars for the function in your Supabase dashboard (or via CLI, depending on your workflow).
+📬 Contact Form Flow
 
-## How can I deploy this project?
+User submits contact form
 
-Simply open [Lovable](https://lovable.dev/projects/b82017c1-d1e1-452d-b9c7-06b2f5f4d6be) and click on Share -> Publish.
+Data stored securely in Supabase
 
-## Can I connect a custom domain to my Lovable project?
+Supabase Edge Function triggers:
 
-Yes, you can!
+Admin notification email
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+User confirmation email
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Email delivery handled via Resend API
+
+🧠 Future Enhancements
+
+Industry-specific landing sections
+
+B2B partner onboarding flows
+
+AI-powered chatbot
+
+CMS integration (optional)
+
+Advanced SEO schema (Organization / Product)
+
+📄 License
+
+© 2026 MikroGreenz Global.
+All rights reserved.
+
+🤝 Partnerships
+
+Interested in collaborating or partnering with MikroGreenz Global?
+Reach out via the website contact form.
