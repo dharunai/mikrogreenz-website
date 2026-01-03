@@ -51,13 +51,19 @@ const WhatAreMicrogreens = () => {
                 <span className="inline-block py-1 px-3 rounded-full bg-[#15803d]/10 text-[#15803d] font-semibold text-sm mb-4">
                   GMP-Certified Excellence
                 </span>
+
                 <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[#14532d] leading-tight">
                   What Are <br />
                   <span className="text-[#16a34a]">Microgreens?</span>
                 </h2>
+
                 <p className="text-gray-700 leading-relaxed text-lg mb-8">
-                  At Mikrogreenz Global, we cultivate young seedlings of premium vegetables and herbs using <span className="font-semibold text-[#15803d]">proprietary GMP-certified technology</span>. Our microgreens are harvested at peak nutrition, delivering up to 40x more nutrients with exceptional flavor and quality.
+                  Microgreens are young, edible plants harvested at an early stage, when their nutritional value and flavor are at their peak.
+                  At MikroGreenz Global, we grow premium vegetable and herb microgreens using
+                  <span className="font-semibold text-[#15803d]"> GMP-certified cultivation technology</span>,
+                  ensuring consistent quality, safety, and nutrient density for foodservice and B2B partners.
                 </p>
+
                 <div className="flex flex-col gap-4">
                   <div className="flex items-start gap-3">
                     <div className="w-10 h-10 rounded-full bg-[#dcfce7] flex items-center justify-center text-[#15803d] font-bold shrink-0">1</div>
@@ -80,11 +86,9 @@ const WhatAreMicrogreens = () => {
             {/* Visual Centerpiece - Floating Images */}
             <div className={`relative z-10 order-1 lg:order-2 flex justify-center items-center h-[500px] w-full transition-opacity duration-1000 delay-300 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
 
-              {/* Abstract Circle decorations */}
               <div className="absolute w-[400px] h-[400px] border-2 border-[#16a34a]/10 rounded-full animate-spin-slow"></div>
               <div className="absolute w-[500px] h-[500px] border border-[#16a34a]/5 rounded-full animate-pulse-slow"></div>
 
-              {/* Main Images */}
               <div className="relative w-full h-full">
                 <img
                   src="/images/microgreens/sunflower.png"
@@ -98,7 +102,6 @@ const WhatAreMicrogreens = () => {
                   className="absolute top-[10%] right-[0%] lg:right-[-10%] w-48 md:w-64 object-contain drop-shadow-xl animate-float z-10 blur-[1px]"
                   style={{ animationDelay: '2s' }}
                 />
-                {/* Decorative Leaf/Element */}
                 <div className="absolute bottom-[10%] left-[0%] lg:left-[-5%] w-32 h-32 bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center shadow-lg border border-white/40 animate-float" style={{ animationDelay: '1.5s' }}>
                   <div className="text-center">
                     <span className="block text-2xl font-bold text-[#15803d]">100%</span>
