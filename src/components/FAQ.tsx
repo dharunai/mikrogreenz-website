@@ -1,8 +1,33 @@
-import * as React from "react";
+import { useEffect, useState, useRef } from "react";
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
 import { cn } from "@/lib/utils";
+import { Leaf, ChevronDown } from "lucide-react";
 
 const FAQ = () => {
+    const [isVisible, setIsVisible] = useState(false);
+    const sectionRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                }
+            },
+            { threshold: 0.1 }
+        );
+
+        if (sectionRef.current) {
+            observer.observe(sectionRef.current);
+        }
+
+        return () => {
+            if (sectionRef.current) {
+                observer.unobserve(sectionRef.current);
+            }
+        };
+    }, []);
+
     const faqs = [
         {
             question: "What are microgreens and why are they good for health?",
@@ -47,27 +72,57 @@ const FAQ = () => {
     ];
 
     return (
-        <section className="relative py-24 overflow-hidden bg-gradient-to-b from-background to-muted/30">
+        <section
+            id="faq"
+            ref={sectionRef}
+            className="relative py-24 md:py-32 overflow-hidden bg-gradient-to-b from-background via-secondary/5 to-background"
+            itemScope
+            itemType="https://schema.org/FAQPage"
+        >
             {/* Background decorative elements */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none opacity-20">
-                <div className="absolute top-10 left-10 w-72 h-72 bg-primary rounded-full blur-[100px]" />
-                <div className="absolute bottom-10 right-10 w-96 h-96 bg-accent rounded-full blur-[100px]" />
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                <div className="absolute top-20 left-[5%] w-72 h-72 bg-primary/3 rounded-full blur-[100px]" />
+                <div className="absolute bottom-20 right-[5%] w-96 h-96 bg-accent/20 rounded-full blur-[100px]" />
+
+                {/* Floating Leaves */}
+                <Leaf className="absolute top-24 right-[10%] w-10 h-10 text-primary/10 animate-float" style={{ animationDelay: '0s', animationDuration: '7s' }} />
+                <Leaf className="absolute bottom-32 left-[8%] w-8 h-8 text-primary/8 animate-float" style={{ animationDelay: '2s', animationDuration: '9s' }} />
+                <Leaf className="absolute top-1/2 right-[15%] w-6 h-6 text-primary/5 animate-float" style={{ animationDelay: '1s', animationDuration: '8s' }} />
             </div>
 
             <div className="container relative z-10 px-4 md:px-6">
-                <div className="text-center mb-16 space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-700">
-                    <h2 className="text-4xl md:text-5xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-foreground/80 pb-2">
-                        Frequently Asked Questions
+                <div
+                    className="text-center mb-16 space-y-4"
+                    style={{
+                        opacity: isVisible ? 1 : 0,
+                        transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
+                        transition: 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
+                    }}
+                >
+                    <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 bg-primary/10 rounded-full border border-primary/20">
+                        <Leaf className="w-4 h-4 text-primary" />
+                        <span className="text-xs font-semibold text-primary uppercase tracking-wider">Common Inquiries</span>
+                    </div>
+
+                    <h2 className="text-3xl md:text-5xl font-heading font-bold tracking-tight text-foreground pb-2">
+                        Frequently Asked <span className="text-primary">Questions</span>
                     </h2>
-                    <p className="text-muted-foreground md:text-lg max-w-2xl mx-auto">
-                        Everything you need to know about our fresh, sustainable microgreens.
+                    <p className="text-muted-foreground text-sm md:text-lg max-w-2xl mx-auto leading-relaxed">
+                        Find everything you need to know about our fresh, sustainable microgreens and how they can elevate your lifestyle.
                     </p>
                 </div>
 
-                <div className="mx-auto max-w-3xl space-y-4">
+                <div className="mx-auto max-w-3xl">
                     <AccordionPrimitive.Root type="single" collapsible className="w-full space-y-4">
                         {faqs.map((faq, index) => (
-                            <AccordionItem key={index} value={`item-${index}`} index={index} question={faq.question} answer={faq.answer} />
+                            <AccordionItem
+                                key={index}
+                                value={`item-${index}`}
+                                index={index}
+                                isVisible={isVisible}
+                                question={faq.question}
+                                answer={faq.answer}
+                            />
                         ))}
                     </AccordionPrimitive.Root>
                 </div>
@@ -76,25 +131,39 @@ const FAQ = () => {
     );
 };
 
-// Custom Accordion Item with glassmorphism and no icons
-const AccordionItem = ({ value, question, answer, index }: { value: string, question: string, answer: string, index: number }) => {
-    // Stagger animation delay based on index
-    const style = { animationDelay: `${index * 100}ms` } as React.CSSProperties;
-
+// Custom Accordion Item with glassmorphism and subtle indicators
+const AccordionItem = ({ value, question, answer, index, isVisible }: { value: string, question: string, answer: string, index: number, isVisible: boolean }) => {
     return (
         <AccordionPrimitive.Item
             value={value}
-            className="group border border-border/50 rounded-xl bg-card/40 backdrop-blur-sm shadow-sm hover:shadow-md hover:bg-card/60 transition-all duration-300 animate-in fade-in slide-in-from-bottom-3 fill-mode-backwards"
-            style={style}
+            className="group border border-border/50 rounded-2xl bg-card/60 backdrop-blur-md shadow-sm hover:shadow-xl hover:bg-card/80 transition-all duration-500 overflow-hidden"
+            style={{
+                opacity: isVisible ? 1 : 0,
+                transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+                transition: 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)',
+                transitionDelay: `${index * 100}ms`
+            }}
+            itemScope
+            itemProp="mainEntity"
+            itemType="https://schema.org/Question"
         >
             <AccordionPrimitive.Header className="flex">
-                <AccordionPrimitive.Trigger className="flex flex-1 items-center justify-between py-6 px-6 font-semibold text-lg transition-all [&[data-state=open]]:text-primary text-left">
-                    {question}
-                    {/* No Icon Here as requested */}
+                <AccordionPrimitive.Trigger className="flex flex-1 items-center justify-between py-5 px-6 md:py-6 md:px-8 font-bold text-base md:text-lg transition-all [&[data-state=open]]:text-primary text-left">
+                    <span itemProp="name" className="relative pr-4">
+                        {question}
+                        {/* Animated Underline */}
+                        <span className="absolute bottom-[-2px] left-0 w-0 h-[2px] bg-primary/30 group-hover:w-full transition-all duration-300" />
+                    </span>
+                    <ChevronDown className="w-5 h-5 text-muted-foreground transition-transform duration-300 group-data-[state=open]:rotate-180 group-data-[state=open]:text-primary" />
                 </AccordionPrimitive.Trigger>
             </AccordionPrimitive.Header>
-            <AccordionPrimitive.Content className="overflow-hidden text-base text-muted-foreground transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
-                <div className="pb-6 px-6 pt-0 leading-relaxed">
+            <AccordionPrimitive.Content
+                className="overflow-hidden text-sm md:text-base text-muted-foreground transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
+                itemScope
+                itemProp="acceptedAnswer"
+                itemType="https://schema.org/Answer"
+            >
+                <div className="pb-6 px-6 md:pb-8 md:px-8 pt-0 leading-relaxed border-t border-primary/5 pt-4" itemProp="text">
                     {answer}
                 </div>
             </AccordionPrimitive.Content>

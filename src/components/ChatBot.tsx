@@ -31,7 +31,7 @@ const ChatBot = () => {
 
   const handleWhatsAppChat = () => {
     // Open WhatsApp with a pre-filled message
-    window.open("https://wa.me/919500096336?text=Hi%2C%20I'm%20interested%20in%20fresh%20microgreens%21", "_blank");
+    window.open("https://wa.me/918220333477?text=Hi%2C%20I'm%20interested%20in%20fresh%20microgreens%21", "_blank");
   };
 
   return (
@@ -60,7 +60,7 @@ const ChatBot = () => {
             <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-2xl transform translate-x-10 -translate-y-10" />
             <div className="flex justify-between items-start relative z-10">
               <div>
-                <h3 className="font-bold text-xl mb-1">MikroGreenz Support</h3>
+                <h3 className="font-bold text-xl mb-1">MikroGreenz Global Support</h3>
                 <p className="text-white/80 text-sm">Typically replies instantly</p>
               </div>
               <button

@@ -86,7 +86,7 @@ const WhyChooseUs = () => {
                         </span>
                     </div>
                     <h2 className="text-3xl md:text-5xl font-heading font-extrabold text-foreground mb-6">
-                        Why Choose <span className="text-primary">MikroGreenz?</span>
+                        Why Choose <span className="text-primary">MikroGreenz Global?</span>
                     </h2>
                     <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                         Experience the difference of truly sustainable, nutrient-dense microgreens.

@@ -47,33 +47,29 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      const { error } = await supabase.functions.invoke("contact", {
-        body: {
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          city: formData.city,
-          country: formData.country,
-          message: formData.message,
-        },
-      });
+      // 1. Data Persistence (Supabase DB)
+      const { error: dbError } = await supabase
+        .from('contact_submissions')
+        .insert([{ ...formData }]);
 
-      if (error) {
-        throw error;
-      }
+      if (dbError) throw dbError;
 
+      // 2. Notification (Edge Function - Non-blocking for UI success)
+      supabase.functions.invoke("contact", { body: formData })
+        .catch(err => console.error("Email notification failed:", err));
+
+      // 3. UI Success Feedback
       toast({
-        title: "Message sent",
-        description: "Thanks! We received your inquiry and will get back to you soon.",
+        title: "Message Sent Successfully",
+        description: "Thank you for reaching out! We will be in touch soon.",
       });
 
       setFormData({ name: "", email: "", phone: "", city: "", country: "", message: "" });
     } catch (err) {
-      const description = err instanceof Error ? err.message : "Please try again in a moment.";
-
+      console.error("Submission Error:", err);
       toast({
-        title: "Could not send message",
-        description,
+        title: "Submission Failed",
+        description: "Please try again later or contact us via WhatsApp.",
         variant: "destructive",
       });
     } finally {
@@ -156,7 +152,7 @@ const Contact = () => {
                           type="tel"
                           value={formData.phone}
                           onChange={handleChange}
-                          placeholder="+91 98765 43210"
+                          placeholder="+91 82203 33477"
                           className="bg-slate-50 border-slate-200 focus:bg-white focus:border-primary focus:ring-primary/20 h-11 rounded-xl"
                           required
                         />

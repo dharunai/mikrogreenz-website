@@ -31,7 +31,7 @@ const Footer = () => {
                 alt="MikroGreenz Global"
                 className="h-14 w-14 md:h-16 md:w-16 object-contain bg-white/10 rounded-full p-2 backdrop-blur-sm"
               />
-              <span className="text-xl md:text-2xl font-heading font-bold">MikroGreenz</span>
+              <span className="text-xl md:text-2xl font-heading font-bold">MikroGreenz Global</span>
             </div>
             <p className="text-sm md:text-base text-primary-foreground/80 leading-relaxed italic">
               Premium quality microgreens grown with care and passion. Bringing you the freshest, most nutritious microgreens for a healthier lifestyle.
@@ -74,11 +74,11 @@ const Footer = () => {
               </a>
 
               <a
-                href="tel:+919876543210"
+                href="tel:+918220333477"
                 className="flex items-start gap-3 text-sm md:text-base text-primary-foreground/80 hover:text-white transition-colors group"
               >
                 <Phone className="w-5 h-5 mt-1 flex-shrink-0 group-hover:scale-110 transition-transform" />
-                <span>+91 98765 43210</span>
+                <span>+91 82203 33477</span>
               </a>
             </div>
           </div>

@@ -1,3 +1,4 @@
+import { useEffect, useState, useRef } from "react";
 import { Leaf, ArrowRight, Star } from "lucide-react";
 import beetrootImg from "@/assets/products/beetroot-microgreens.jpg";
 import radishImg from "@/assets/products/radish-microgreens.jpg";
@@ -11,6 +12,30 @@ import cilantroImg from "@/assets/products/cilantro-microgreens.jpg";
 import kohlrabiImg from "@/assets/products/kohlrabi-microgreens.jpg";
 
 const Products = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   const products = [
     {
       name: "Beetroot Microgreens",
@@ -95,40 +120,37 @@ const Products = () => {
   ];
 
   return (
-    <section id="products" className="py-24 relative overflow-hidden bg-white">
+    <section id="products" ref={sectionRef} className="py-24 md:py-32 relative overflow-hidden bg-white">
       {/* Abstract Background Curves */}
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-secondary rounded-full blur-[80px] translate-y-1/2 -translate-x-1/2 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[80px] translate-y-1/2 -translate-x-1/2 pointer-events-none" />
 
-      {/* SVG Curve Top Right */}
-      <svg className="absolute top-0 right-0 w-1/3 h-auto text-primary/10 pointer-events-none" viewBox="0 0 100 100" preserveAspectRatio="none">
-        <path d="M0 0 L100 0 L100 100 Q50 100 0 0 Z" fill="currentColor" />
-      </svg>
-
-      {/* Geometric Shape Bottom Left */}
-      <img
-        src="data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%2310B981' fill-opacity='0.05' d='M44.7,-76.4C58.9,-69.2,71.8,-59.1,81.6,-46.6C91.4,-34.1,98.1,-19.2,95.8,-5.3C93.5,8.6,82.2,21.5,71.2,32.7C60.2,43.9,49.5,53.4,37.6,60.8C25.7,68.2,12.7,73.5,-0.6,74.5C-13.9,75.5,-27.2,72.2,-38.7,65.2C-50.2,58.2,-59.9,47.5,-67.6,35.4C-75.3,23.3,-81,9.8,-79.8,-3.1C-78.6,-16,-70.5,-28.3,-60.7,-38.4C-50.9,-48.5,-39.4,-56.3,-27.3,-64.8C-15.2,-73.3,-2.5,-82.5,10.6,-82.5C23.7,-82.5,30.5,-83.6,44.7,-76.4Z' transform='translate(100 100)' /%3E%3C/svg%3E"
-        className="absolute bottom-10 left-10 w-96 h-96 opacity-50 animate-pulse pointer-events-none"
-        alt="background-shape"
-      />
+      {/* Floating Leaves */}
+      <Leaf className="absolute top-20 left-[10%] w-12 h-12 text-primary/5 animate-float" style={{ animationDuration: '6s' }} />
+      <Leaf className="absolute bottom-40 right-[15%] w-10 h-10 text-primary/5 animate-float" style={{ animationDelay: '2s', animationDuration: '8s' }} />
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-20">
-          <div className="inline-block mb-6">
-            <span className="py-2 px-6 rounded-full bg-primary/10 border border-primary/20 text-primary font-bold tracking-wide uppercase text-sm">
-              Our Harvest
-            </span>
+        <div
+          className="text-center max-w-3xl mx-auto mb-20"
+          style={{
+            opacity: isVisible ? 1 : 0,
+            transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+            transition: 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
+          }}
+        >
+          <div className="inline-block mb-6 px-4 py-2 bg-primary/10 rounded-full border border-primary/20 shadow-sm">
+            <span className="text-primary font-bold tracking-wide uppercase text-xs">Our Harvest</span>
           </div>
-          <h2 className="text-3xl md:text-6xl font-heading font-extrabold text-foreground mb-6 leading-tight">
+          <h2 className="text-4xl md:text-6xl font-heading font-extrabold text-foreground mb-6 leading-tight">
             Premium <span className="text-primary relative inline-block">
               Selection
-              <svg className="absolute w-full h-3 -bottom-1 left-0 text-secondary" viewBox="0 0 100 10" preserveAspectRatio="none">
+              <svg className="absolute w-full h-3 -bottom-2 left-0 text-primary/20" viewBox="0 0 100 10" preserveAspectRatio="none">
                 <path d="M0 5 Q50 10 100 5" stroke="currentColor" strokeWidth="8" fill="none" />
               </svg>
             </span>
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Explire our range of meticulously grown microgreens, each packed with distinct flavors and potent health benefits.
+            Explore our range of meticulously grown microgreens, each packed with distinct flavors and potent health benefits.
           </p>
         </div>
 
@@ -136,34 +158,39 @@ const Products = () => {
           {products.map((product, index) => (
             <div
               key={index}
-              className="group relative bg-white rounded-[2rem] shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden hover:-translate-y-2 border border-slate-100"
+              className="group relative bg-white rounded-[2rem] shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden hover:-translate-y-3 border border-slate-100"
+              style={{
+                opacity: isVisible ? 1 : 0,
+                transform: isVisible ? 'translateY(0)' : 'translateY(40px)',
+                transition: 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
+                transitionDelay: `${index * 100}ms`
+              }}
             >
               {/* Card Geometric Banner */}
-              <div className={`absolute top-0 right-0 w-24 h-24 ${product.accent} opacity-10 rounded-bl-[4rem] group-hover:scale-150 transition-transform duration-500 ease-out`} />
+              <div className={`absolute top-0 right-0 w-24 h-24 ${product.accent} opacity-5 rounded-bl-[4rem] group-hover:scale-150 transition-transform duration-700 ease-out`} />
 
               {/* Image Section */}
-              <div className="relative h-56 overflow-hidden p-4 pb-0">
-                <div className="w-full h-full rounded-t-[1.5rem] overflow-hidden relative">
-                  <div className={`absolute inset-0 bg-gradient-to-t from-black/20 to-transparent z-10`} />
+              <div className="relative h-64 overflow-hidden p-4 pb-0">
+                <div className="w-full h-full rounded-t-[1.5rem] overflow-hidden relative shadow-inner">
+                  <div className={`absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent z-10 opacity-60 group-hover:opacity-40 transition-opacity duration-500`} />
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110"
                   />
 
                   {/* Floating Action Button */}
-                  <div className="absolute bottom-4 right-4 z-20 translate-y-12 group-hover:translate-y-0 transition-transform duration-500">
-                    <div className={`w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center ${product.textColor}`}>
-                      <ArrowRight className="w-5 h-5" />
+                  <div className="absolute bottom-4 right-4 z-20 translate-y-12 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                    <div className={`w-12 h-12 rounded-full bg-white shadow-xl flex items-center justify-center ${product.textColor} hover:scale-110 transition-transform`}>
+                      <ArrowRight className="w-6 h-6" />
                     </div>
                   </div>
                 </div>
               </div>
 
               {/* Content Section */}
-              <div className="p-6 pt-6 relative">
-                {/* Decorative Line */}
-                <div className={`w-12 h-1 rounded-full ${product.accent} mb-4`} />
+              <div className="p-8 pt-6 relative">
+                <div className={`w-12 h-1.5 rounded-full ${product.accent} mb-4 transform origin-left group-hover:scale-x-150 transition-transform duration-500`} />
 
                 <h3 className="text-2xl font-bold text-slate-800 mb-3 group-hover:text-primary transition-colors">
                   {product.name}
@@ -174,13 +201,13 @@ const Products = () => {
                 </p>
 
                 {/* Footer / Badge */}
-                <div className="flex items-center justify-between border-t border-slate-100 pt-4">
-                  <div className={`flex items-center gap-1 text-xs font-bold uppercase tracking-wider ${product.textColor}`}>
+                <div className="flex items-center justify-between border-t border-slate-100 pt-5">
+                  <div className={`flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest ${product.textColor}`}>
                     <Star className="w-3 h-3 fill-current" />
                     Premium Grade
                   </div>
-                  <div className="text-slate-300">
-                    <Leaf className="w-4 h-4" />
+                  <div className="text-slate-300 transform group-hover:rotate-12 transition-transform">
+                    <Leaf className="w-5 h-5" />
                   </div>
                 </div>
               </div>

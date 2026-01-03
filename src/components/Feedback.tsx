@@ -31,14 +31,14 @@ const Feedback = () => {
       name: "Lakshmi M.",
       business: "FreshLeaf Foods",
       city: "Madurai",
-      feedback: "The delivery is always on time, and quality never drops. Our customers now ask specifically for MikroGreenz trays by name.",
+      feedback: "The delivery is always on time, and quality never drops. Our customers now ask specifically for MikroGreenz Global trays by name.",
       rating: 5,
     },
     {
       name: "Arun Nair",
       business: "Nilgiri Naturals",
       city: "Salem",
-      feedback: "We've added MikroGreenz to our organic aisle and the feedback from shoppers has been amazing. It's our top-moving fresh item.",
+      feedback: "We've added MikroGreenz Global to our organic aisle and the feedback from shoppers has been amazing. It's our top-moving fresh item.",
       rating: 5,
     },
   ];
