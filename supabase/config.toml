@@ -74,3 +74,6 @@ backend = "postgres"
 
 [functions.chat]
 verify_jwt = false
+
+[functions.contact]
+verify_jwt = false
