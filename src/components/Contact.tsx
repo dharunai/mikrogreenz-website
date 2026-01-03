@@ -54,9 +54,13 @@ const Contact = () => {
 
       if (dbError) throw dbError;
 
-      // 2. Notification (Edge Function - Non-blocking for UI success)
-      supabase.functions.invoke("contact", { body: formData })
-        .catch(err => console.error("Email notification failed:", err));
+      // 2. Notification (Edge Function - Await for reliability)
+      try {
+        await supabase.functions.invoke("contact", { body: formData });
+      } catch (fnErr) {
+        console.error("Email notification failed:", fnErr);
+        // We don't throw here so the user still sees a success message for the lead save
+      }
 
       // 3. UI Success Feedback
       toast({
