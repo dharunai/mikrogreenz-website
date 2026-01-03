@@ -52,21 +52,23 @@ const Contact = () => {
         .from('contact_submissions')
         .insert([{ ...formData }]);
 
-      if (dbError) throw dbError;
-
       // 2. Notification (Edge Function - Await for reliability)
-      try {
-        await supabase.functions.invoke("contact", { body: formData });
-      } catch (fnErr) {
-        console.error("Email notification failed:", fnErr);
-        // We don't throw here so the user still sees a success message for the lead save
-      }
+      const { data: fnData, error: fnError } = await supabase.functions.invoke("contact", { body: formData });
 
-      // 3. UI Success Feedback
-      toast({
-        title: "Message Sent Successfully",
-        description: "Thank you for reaching out! We will be in touch soon.",
-      });
+      if (fnError || (fnData && fnData.errors)) {
+        console.error("Email notification failed:", fnError || fnData.errors);
+        toast({
+          title: "Inquiry Saved",
+          description: "Your inquiry was saved, but we couldn't send the confirmation email. We'll be in touch soon!",
+          variant: "default",
+        });
+      } else {
+        // 3. UI Success Feedback
+        toast({
+          title: "Message Sent Successfully",
+          description: "Thank you for reaching out! We will be in touch soon.",
+        });
+      }
 
       setFormData({ name: "", email: "", phone: "", city: "", country: "", message: "" });
     } catch (err) {

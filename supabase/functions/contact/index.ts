@@ -47,39 +47,61 @@ serve(async (req) => {
 
     if (!RESEND_API_KEY) throw new Error("RESEND_API_KEY missing");
 
-    const sendEmail = (to: string, subject: string, html: string) =>
-      fetch("https://api.resend.com/emails", {
+    const sendEmail = async (to: string, subject: string, html: string, replyTo?: string) => {
+      console.log(`Sending email to ${to}...`);
+      const res = await fetch("https://api.resend.com/emails", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${RESEND_API_KEY}`,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ from: FROM_EMAIL, to, subject, html }),
+        body: JSON.stringify({ from: FROM_EMAIL, to, subject, html, reply_to: replyTo }),
       });
 
-    // Send Admin & User emails
-    await Promise.all([
+      const data = await res.json();
+      if (!res.ok) {
+        console.error(`Resend error for ${to}:`, data);
+        throw new Error(`Resend API error: ${res.status} - ${JSON.stringify(data)}`);
+      }
+      console.log(`Email sent successfully to ${to}`);
+      return data;
+    };
+
+    // Send Admin & User emails independently
+    const results = await Promise.allSettled([
       // Admin Notification
       sendEmail(
         ADMIN_EMAIL,
-        `New Inquiry: ${name}`,
-        `<p><strong>Name:</strong> ${name}</p><p><strong>Email:</strong> ${email}</p><p><strong>Phone:</strong> ${phone}</p><p><strong>City:</strong> ${city}</p><p><strong>Message:</strong> ${message}</p>`
+        `New Inquiry: ${escapeHtml(name)}`,
+        `<p><strong>Name:</strong> ${escapeHtml(name)}</p><p><strong>Email:</strong> ${escapeHtml(email)}</p><p><strong>Phone:</strong> ${escapeHtml(phone)}</p><p><strong>City:</strong> ${escapeHtml(city)}</p><p><strong>Message:</strong> ${escapeHtml(message)}</p>`,
+        email
       ),
       // User Confirmation
       sendEmail(
         email,
         "Thank you for contacting MikroGreenz",
-        `<p>Hi ${name.split(" ")[0]},</p><p>We received your inquiry and will get back to you shortly.</p><p>Best,<br/>Team MikroGreenz</p>`
+        `<p>Hi ${escapeHtml(name.split(" ")[0])},</p><p>We received your inquiry and will get back to you shortly.</p><p>Best,<br/>Team MikroGreenz</p>`
       )
     ]);
+
+    const errors = results.filter(r => r.status === "rejected").map(r => (r as PromiseRejectedResult).reason.message);
+
+    if (errors.length > 0) {
+      console.error("Some emails failed to send:", errors);
+      return new Response(JSON.stringify({ success: errors.length < 2, errors }), {
+        status: errors.length === 2 ? 500 : 200, // Return 200 if at least one worked, for better UX
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
 
     return new Response(JSON.stringify({ success: true }), {
       status: 200,
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   } catch (error) {
-    const message = error instanceof Error ? error.message : "An unknown error occurred";
-    return new Response(JSON.stringify({ error: message }), {
+    console.error("Global function error:", error);
+    const msg = error instanceof Error ? error.message : "An unknown error occurred";
+    return new Response(JSON.stringify({ error: msg }), {
       status: 500,
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
