@@ -82,7 +82,7 @@ const Partnership = () => {
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-500">Promise</span>
               </h2>
               <p className="mt-6 text-xl text-slate-600 leading-relaxed max-w-lg">
-                Partner with <span className="font-semibold text-emerald-700">MikroGreenz Global</span> for a supply chain defined by excellence and consistency.
+                Partner with <span className="font-semibold text-emerald-700">Mikrogreenz Global</span> for a supply chain defined by excellence and consistency.
               </p>
             </div>
 

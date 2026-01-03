@@ -56,7 +56,7 @@ const Hero = () => {
           <div className="space-y-6">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/20 backdrop-blur-md rounded-full border border-white/20 shadow-xl">
               <Sprout className="w-5 h-5 text-primary-light" />
-              <span className="text-sm font-bold text-white uppercase tracking-widest">Premium Urban Farming</span>
+              <span className="text-sm font-bold text-white uppercase tracking-widest">Proprietary Technology & GMP Standards</span>
             </div>
 
             <h1 className="text-4xl md:text-7xl lg:text-8xl font-heading font-black text-white leading-[1.1] drop-shadow-2xl">
@@ -65,7 +65,7 @@ const Hero = () => {
             </h1>
 
             <p className="text-xl md:text-2xl text-white/90 max-w-2xl leading-relaxed font-medium drop-shadow-lg">
-              We are a new-age agri-brand redefining healthy living through <span className="text-white font-bold border-b-2 border-primary-light">sustainable, locally grown</span> microgreens.
+              Pioneering <span className="text-white font-bold border-b-2 border-primary-light">GMP-certified microgreens cultivation</span> with proprietary technology, delivering nutrient-rich superfoods through sustainable innovation.
             </p>
           </div>
 

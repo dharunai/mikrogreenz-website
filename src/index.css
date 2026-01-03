@@ -8,7 +8,7 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* MikroGreenz Premium Brand Palette */
+    /* Mikrogreenz Premium Brand Palette */
     /* Rich Forest Green Primary */
     --primary: 146 65% 25%;
     --primary-foreground: 60 30% 96%;

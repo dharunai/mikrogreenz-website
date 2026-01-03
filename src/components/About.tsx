@@ -82,7 +82,7 @@ const About = () => {
           </div>
 
           <h2 className="text-3xl md:text-6xl font-heading font-bold text-foreground mb-6 leading-tight">
-            About <span className="bg-gradient-to-r from-primary via-primary-light to-primary bg-clip-text text-transparent">MikroGreenz Global</span>
+            About <span className="bg-gradient-to-r from-primary via-primary-light to-primary bg-clip-text text-transparent">Mikrogreenz Global</span>
           </h2>
 
           <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">

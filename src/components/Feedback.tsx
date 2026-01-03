@@ -10,7 +10,7 @@ const Feedback = () => {
       name: "Anbu Kumar",
       business: "Anbu Organics",
       city: "Coimbatore",
-      feedback: "MikroGreenz Global has changed the way we stock our fresh section. Customers love the vibrant greens and freshness that lasts all week.",
+      feedback: "Mikrogreenz Global has changed the way we stock our fresh section. Customers love the vibrant greens and freshness that lasts all week.",
       rating: 5,
     },
     {
@@ -31,14 +31,14 @@ const Feedback = () => {
       name: "Lakshmi M.",
       business: "FreshLeaf Foods",
       city: "Madurai",
-      feedback: "The delivery is always on time, and quality never drops. Our customers now ask specifically for MikroGreenz Global trays by name.",
+      feedback: "The delivery is always on time, and quality never drops. Our customers now ask specifically for Mikrogreenz Global trays by name.",
       rating: 5,
     },
     {
       name: "Arun Nair",
       business: "Nilgiri Naturals",
       city: "Salem",
-      feedback: "We've added MikroGreenz Global to our organic aisle and the feedback from shoppers has been amazing. It's our top-moving fresh item.",
+      feedback: "We've added Mikrogreenz Global to our organic aisle and the feedback from shoppers has been amazing. It's our top-moving fresh item.",
       rating: 5,
     },
   ];

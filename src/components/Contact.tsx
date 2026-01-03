@@ -93,26 +93,25 @@ const Contact = () => {
       <Card className="relative w-full max-w-lg bg-white overflow-hidden rounded-[2.5rem] shadow-[0_32px_64px_-12px_rgba(22,60,30,0.3)] border-none animate-splash-in">
         <div className="absolute top-0 left-0 w-full h-2 bg-primary" />
 
-        <CardContent className="p-12 text-center space-y-8">
-          <div className="space-y-4">
-            <h3 className="text-4xl md:text-5xl font-heading font-extrabold text-primary leading-tight">
-              Message <br />
-              <span className="text-foreground">Sent</span>
+        <CardContent className="p-10 text-center space-y-6">
+          <div className="space-y-3">
+            <h3 className="text-3xl md:text-4xl font-heading font-extrabold text-primary leading-tight">
+              Submitted!
             </h3>
+            <p className="text-lg font-semibold text-foreground">Thank you</p>
             <div className="w-16 h-1 bg-primary/20 mx-auto rounded-full" />
           </div>
 
-          <p className="text-xl text-muted-foreground leading-relaxed font-medium">
-            Thank you for reaching out to <span className="text-primary font-bold">MikroGreenz</span>.
-            A confirmation email is on its way, and our team will be in touch shortly.
+          <p className="text-base text-muted-foreground leading-relaxed">
+            We've received your inquiry. Our team will reach out to you shortly!
           </p>
 
           <Button
             onClick={() => setShowSuccess(false)}
             size="lg"
-            className="w-full bg-primary hover:bg-primary-hover text-white h-14 text-xl font-bold rounded-2xl shadow-xl shadow-primary/20 transition-all active:scale-95 py-8"
+            className="w-full bg-primary hover:bg-primary-hover text-white h-12 text-base font-bold rounded-2xl shadow-xl shadow-primary/20 transition-all active:scale-95"
           >
-            Wonderful
+            Got It, Thanks!
           </Button>
         </CardContent>
 

@@ -32,7 +32,7 @@ const Team = () => {
         {
             name: "Akshaya Varunkarthik",
             role: "CEO / Founder",
-            description: "House Maker & Biotechnologist. Passionate about sustainable farming and bringing nutrient-rich superfoods to every home.",
+            description: "Data analyst and food enthusiast. Passionate about sustainable farming and bringing nutrient-rich superfoods to every home.",
             image: "/images/team/akshaya-ceo.jpg",
             socials: {
                 linkedin: "#",
@@ -44,7 +44,7 @@ const Team = () => {
         {
             name: "Varun Karthik Ram",
             role: "Business Strategist",
-            description: "5+ years experience as Senior Business Analyst in big MNC, Micro Greens Certified Instructor.",
+            description: "Business strategist for top MNCs and pioneer to new technology in the field of microgreens. Passionate about innovation and sustainable agriculture.",
             image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=2787&auto=format&fit=crop", // Placeholder image
             socials: {
                 linkedin: "#",

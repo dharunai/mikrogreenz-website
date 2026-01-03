@@ -69,12 +69,12 @@ const Navbar = () => {
           >
             <img
               src={logo}
-              alt="MikroGreenz Global"
+              alt="Mikrogreenz Global"
               className="h-10 w-10 md:h-14 md:w-14 rounded-full object-cover shadow-md"
               style={{ background: 'transparent' }}
             />
             <span className="text-sm md:text-xl font-heading font-bold text-primary text-left leading-tight">
-              MikroGreenz Global
+              Mikrogreenz Global
             </span>
           </button>
 
@@ -90,7 +90,7 @@ const Navbar = () => {
               </button>
             ))}
             <Button
-              onClick={() => scrollToSection("contact")}
+              onClick={() => scrollToSection({ id: "contact" })}
               className="bg-primary hover:bg-primary-hover text-primary-foreground"
             >
               Get a Quote
@@ -101,7 +101,7 @@ const Navbar = () => {
           <div className="flex items-center gap-4 md:hidden">
             <Button
               size="sm"
-              onClick={() => scrollToSection("contact")}
+              onClick={() => scrollToSection({ id: "contact" })}
               className="bg-primary hover:bg-primary-hover text-white text-xs px-4 h-9 rounded-full shadow-sm"
             >
               Get Quote
@@ -128,7 +128,7 @@ const Navbar = () => {
               </button>
             ))}
             <Button
-              onClick={() => scrollToSection("contact")}
+              onClick={() => scrollToSection({ id: "contact" })}
               className="w-full mt-2 bg-primary hover:bg-primary-hover text-primary-foreground"
             >
               Get a Quote

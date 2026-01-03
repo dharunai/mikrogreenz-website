@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Leaf, Recycle, UtensilsCrossed, Heart } from "lucide-react";
+import { Leaf, Recycle, UtensilsCrossed, Bot } from "lucide-react";
 import centerImg from "@/assets/hero-microgreens.jpg"; // Using a lush image for the center
 
 const WhyChooseUs = () => {
@@ -9,34 +9,34 @@ const WhyChooseUs = () => {
     const leftValues = [
         {
             icon: Leaf,
-            title: "Nutrient Powerhouse",
-            description: "Up to 40× more nutrients than mature vegetables, packed with vitamins.",
+            title: "Microgreens Technology Pioneers",
+            description: "Proprietors in advanced microgreens cultivation technology, leading innovation in the industry.",
             accent: "bg-green-100",
             iconColor: "text-green-600",
         },
         {
-            icon: Recycle,
-            title: "Sustainable Growth",
-            description: "Zero pesticides, minimal water, and eco-friendly vertical farming.",
-            accent: "bg-emerald-100",
-            iconColor: "text-emerald-600",
+            icon: Bot,
+            title: "AI-Powered Health Solutions",
+            description: "Early adopters of AI technology featuring MIKO, our intelligent health bot for personalized nutrition guidance.",
+            accent: "bg-blue-100",
+            iconColor: "text-blue-600",
         },
     ];
 
     const rightValues = [
+        {
+            icon: Recycle,
+            title: "Sustainable Growth",
+            description: "Zero pesticides, minimal water, and eco-friendly vertical farming for a greener future.",
+            accent: "bg-emerald-100",
+            iconColor: "text-emerald-600",
+        },
         {
             icon: UtensilsCrossed,
             title: "Culinary Excellence",
             description: "Elevate dishes with vibrant colors, textures, and intense fresh flavors.",
             accent: "bg-lime-100",
             iconColor: "text-lime-600",
-        },
-        {
-            icon: Heart,
-            title: "Health Benefits",
-            description: "Boost immunity and wellness with natural, plant-based superfoods.",
-            accent: "bg-teal-100",
-            iconColor: "text-teal-600",
         },
     ];
 
@@ -86,7 +86,7 @@ const WhyChooseUs = () => {
                         </span>
                     </div>
                     <h2 className="text-3xl md:text-5xl font-heading font-extrabold text-foreground mb-6">
-                        Why Choose <span className="text-primary">MikroGreenz Global?</span>
+                        Why Choose <span className="text-primary">Mikrogreenz Global?</span>
                     </h2>
                     <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                         Experience the difference of truly sustainable, nutrient-dense microgreens.

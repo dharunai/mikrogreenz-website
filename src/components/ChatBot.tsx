@@ -60,7 +60,7 @@ const ChatBot = () => {
             <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-2xl transform translate-x-10 -translate-y-10" />
             <div className="flex justify-between items-start relative z-10">
               <div>
-                <h3 className="font-bold text-xl mb-1">MikroGreenz Global Support</h3>
+                <h3 className="font-bold text-xl mb-1">Mikrogreenz Global Support</h3>
                 <p className="text-white/80 text-sm">Typically replies instantly</p>
               </div>
               <button
@@ -76,7 +76,7 @@ const ChatBot = () => {
           <div className="p-6 bg-slate-50 min-h-[200px] flex flex-col gap-4">
             <div className="bg-white p-4 rounded-xl rounded-tl-none shadow-sm border border-slate-100 text-slate-700 text-sm leading-relaxed">
               Hi there! 👋 <br /><br />
-              Welcome to MikroGreenz Global. Looking for fresh, nutrient-rich greens? We're here to help you grow healthy! 🌿
+              Welcome to Mikrogreenz Global. Looking for fresh, nutrient-rich greens? We're here to help you grow healthy! 🌿
             </div>
             <p className="text-xs text-center text-slate-400 mt-auto">Powered by Freshness</p>
           </div>

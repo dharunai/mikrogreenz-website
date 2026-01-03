@@ -28,10 +28,10 @@ const Footer = () => {
             <div className="flex items-center gap-3">
               <img
                 src={logo}
-                alt="MikroGreenz Global"
+                alt="Mikrogreenz Global"
                 className="h-14 w-14 md:h-16 md:w-16 object-contain bg-white/10 rounded-full p-2 backdrop-blur-sm"
               />
-              <span className="text-xl md:text-2xl font-heading font-bold">MikroGreenz Global</span>
+              <span className="text-xl md:text-2xl font-heading font-bold">Mikrogreenz Global</span>
             </div>
             <p className="text-sm md:text-base text-primary-foreground/80 leading-relaxed italic">
               Premium quality microgreens grown with care and passion. Bringing you the freshest, most nutritious microgreens for a healthier lifestyle.
@@ -150,7 +150,7 @@ const Footer = () => {
         <div className="border-t border-white/10 py-6 md:py-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs md:text-sm text-primary-foreground/60">
             <p className="text-center md:text-left">
-              © {new Date().getFullYear()} MikroGreenz Global. All Rights Reserved.
+              © {new Date().getFullYear()} Mikrogreenz Global. All Rights Reserved.
             </p>
             <div className="flex flex-wrap justify-center gap-4 md:gap-6">
               <a href="#privacy" className="hover:text-white transition-colors">Privacy Policy</a>
