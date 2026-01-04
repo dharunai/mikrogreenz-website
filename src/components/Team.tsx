@@ -45,7 +45,7 @@ const Team = () => {
             name: "Varun Karthik Ram",
             role: "Business Strategist",
             description: "Business strategist for top MNCs and pioneer to new technology in the field of microgreens. Passionate about innovation and sustainable agriculture.",
-            image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=2787&auto=format&fit=crop", // Placeholder image
+            image: "/images/team/Varun.jpg", // Placeholder image
             socials: {
                 linkedin: "#",
                 twitter: "#",
