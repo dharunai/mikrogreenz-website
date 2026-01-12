@@ -30,7 +30,7 @@ const Team = () => {
 
     const team = [
         {
-            name: "Akshaya Varunkarthik",
+            name: "Akshaya Suresh Babu",
             role: "CEO / Founder",
             description: "Data analyst and food enthusiast. Passionate about sustainable farming and bringing nutrient-rich superfoods to every home.",
             image: "/images/team/akshaya-ceo.jpg",
