@@ -14,8 +14,8 @@ const Footer = () => {
       {/* Decorative Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
-        <Leaf className="absolute top-20 left-10 w-32 h-32 text-white/5 animate-float" style={{ animationDuration: '8s' }} />
-        <Leaf className="absolute bottom-20 right-20 w-40 h-40 text-white/5 animate-float" style={{ animationDuration: '10s', animationDelay: '2s' }} />
+        <Leaf className="absolute top-20 left-10 w-32 h-32 text-white/5 animate-float" style={{ animationDuration: "8s" }} />
+        <Leaf className="absolute bottom-20 right-20 w-40 h-40 text-white/5 animate-float" style={{ animationDuration: "10s", animationDelay: "2s" }} />
         <div className="absolute -top-24 -right-24 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
         <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-white/5 rounded-full blur-3xl"></div>
       </div>
@@ -31,13 +31,14 @@ const Footer = () => {
                 alt="Mikrogreenz Global"
                 className="h-14 w-14 md:h-16 md:w-16 object-contain bg-white/10 rounded-full p-2 backdrop-blur-sm"
               />
-              <span className="text-xl md:text-2xl font-heading font-bold">Mikrogreenz Global</span>
+              <span className="text-xl md:text-2xl font-heading font-bold">
+                Mikrogreenz Global
+              </span>
             </div>
             <p className="text-sm md:text-base text-primary-foreground/80 leading-relaxed italic">
               Premium quality microgreens grown with care and passion. Bringing you the freshest, most nutritious microgreens for a healthier lifestyle.
             </p>
 
-            {/* Social Media or Certifications */}
             <div className="flex gap-3">
               <div className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center hover:bg-white/20 transition-colors cursor-pointer">
                 <span className="text-lg">🌱</span>
@@ -51,7 +52,7 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Reach Us Column */}
+          {/* Reach Us */}
           <div>
             <h4 className="text-base md:text-lg font-heading font-semibold mb-4 md:mb-6 pb-2 border-b border-white/20 inline-block">
               Reach Us
@@ -83,18 +84,18 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Company Column */}
+          {/* Company */}
           <div>
             <h4 className="text-base md:text-lg font-heading font-semibold mb-4 md:mb-6 pb-2 border-b border-white/20 inline-block">
               Company
             </h4>
             <ul className="space-y-3">
               {[
-                { name: 'Home', id: 'home' },
-                { name: 'Microgreens Varieties', id: 'products' },
-                { name: 'Health Benefits', id: 'benefits' },
-                { name: 'Industry Applications', id: 'feedback' },
-                { name: 'About Us', id: 'about' }
+                { name: "Home", id: "home" },
+                { name: "Microgreens Varieties", id: "products" },
+                { name: "Health Benefits", id: "benefits" },
+                { name: "Industry Applications", id: "feedback" },
+                { name: "About Us", id: "about" }
               ].map((item) => (
                 <li key={item.id}>
                   <button
@@ -109,18 +110,18 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Links Column */}
+          {/* Links */}
           <div>
             <h4 className="text-base md:text-lg font-heading font-semibold mb-4 md:mb-6 pb-2 border-b border-white/20 inline-block">
               Links
             </h4>
             <ul className="space-y-3">
               {[
-                { name: 'Contact Us', id: 'contact' },
-                { name: 'Privacy Policy', href: '#privacy' },
-                { name: 'Terms Of Service', href: '#terms' },
-                { name: 'Partnership', id: 'feedback' },
-                { name: 'Get a Quote', id: 'contact' }
+                { name: "Contact Us", id: "contact" },
+                { name: "Privacy Policy", href: "#privacy" },
+                { name: "Terms Of Service", href: "#terms" },
+                { name: "Partnership", id: "feedback" },
+                { name: "Get a Quote", id: "contact" }
               ].map((item) => (
                 <li key={item.name}>
                   {item.id ? (
@@ -149,9 +150,21 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-white/10 py-6 md:py-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs md:text-sm text-primary-foreground/60">
-            <p className="text-center md:text-left">
-              © {new Date().getFullYear()} Mikrogreenz Global. All Rights Reserved.
-            </p>
+            <div className="text-center md:text-left space-y-1">
+              <p>© {new Date().getFullYear()} Mikrogreenz Global. All Rights Reserved.</p>
+              <p className="text-[11px] md:text-xs text-primary-foreground/50">
+                Site developed by{" "}
+                <a
+                  href="https://thegenworks.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white underline underline-offset-2 transition-colors"
+                >
+                  TheGenWorks
+                </a>
+              </p>
+            </div>
+
             <div className="flex flex-wrap justify-center gap-4 md:gap-6">
               <a href="#privacy" className="hover:text-white transition-colors">Privacy Policy</a>
               <span className="hidden md:inline">•</span>
