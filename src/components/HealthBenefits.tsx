@@ -76,7 +76,7 @@ const HealthBenefits = () => {
     ];
 
     return (
-        <section ref={sectionRef} className="py-24 bg-gradient-to-br from-white to-green-50/50 relative overflow-hidden">
+        <section id="benefits" ref={sectionRef} className="py-24 bg-gradient-to-br from-white to-green-50/50 relative overflow-hidden">
             {/* Animated Floating Leaves Background */}
             <div className="absolute inset-0 pointer-events-none overflow-hidden">
                 <Leaf className="absolute top-20 left-[10%] w-8 h-8 text-primary/10 animate-float" style={{ animationDuration: '8s' }} />

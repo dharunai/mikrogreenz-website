@@ -3,10 +3,12 @@ import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Team from "@/components/Team";
 import WhatAreMicrogreens from "@/components/WhatAreMicrogreens";
+import HealthBenefits from "@/components/HealthBenefits";
+
 
 import Products from "@/components/Products";
 import WhyChooseUs from "@/components/WhyChooseUs";
-import IndustryApplications from "@/components/IndustryApplications";
+// import IndustryApplications from "@/components/IndustryApplications";
 import Feedback from "@/components/Feedback";
 import Partnership from "@/components/Partnership";
 import Contact from "@/components/Contact";
@@ -22,10 +24,12 @@ const Index = () => {
       <About />
       <Team />
       <WhatAreMicrogreens />
+      <HealthBenefits />
+
 
       <Products />
       <WhyChooseUs />
-      <IndustryApplications />
+      {/* <IndustryApplications /> */}
       <Feedback />
       <Partnership />
       <FAQ />

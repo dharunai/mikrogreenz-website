@@ -51,8 +51,6 @@ const Navbar = () => {
     { label: "About", id: "about" },
     { label: "Products", id: "products" },
     { label: "Benefits", id: "benefits" },
-    { label: "Research", id: "research", type: "page", path: "/research" },
-    { label: "Industries", id: "industries" },
     { label: "Contact", id: "contact" },
   ];
 

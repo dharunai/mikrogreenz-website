@@ -49,7 +49,7 @@ const WhatAreMicrogreens = () => {
             <div className={`relative z-20 order-2 lg:order-1 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
               <div className="backdrop-blur-md bg-white/40 border border-white/50 rounded-2xl p-8 md:p-12 shadow-xl hover:shadow-2xl transition-shadow duration-300">
                 <span className="inline-block py-1 px-3 rounded-full bg-[#15803d]/10 text-[#15803d] font-semibold text-sm mb-4">
-                  GMP-Certified Excellence
+                  Nutrient-Rich Superfoods
                 </span>
 
                 <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[#14532d] leading-tight">
@@ -60,23 +60,23 @@ const WhatAreMicrogreens = () => {
                 <p className="text-gray-700 leading-relaxed text-lg mb-8">
                   Microgreens are young, edible plants harvested at an early stage, when their nutritional value and flavor are at their peak.
                   At MikroGreenz Global, we grow premium vegetable and herb microgreens using
-                  <span className="font-semibold text-[#15803d]"> GMP-certified cultivation technology</span>,
-                  ensuring consistent quality, safety, and nutrient density for foodservice and B2B partners.
+                  <span className="font-semibold text-[#15803d]"> advanced sustainable technology</span>,
+                  ensuring vegetable nutrient density, safety, and consistent quality for health-conscious consumers and chefs.
                 </p>
 
                 <div className="flex flex-col gap-4">
                   <div className="flex items-start gap-3">
                     <div className="w-10 h-10 rounded-full bg-[#dcfce7] flex items-center justify-center text-[#15803d] font-bold shrink-0">1</div>
                     <div>
-                      <h4 className="font-bold text-[#14532d]">GMP-Certified Facility</h4>
-                      <p className="text-sm text-gray-600">Cultivated in controlled, quality-assured environments.</p>
+                      <h4 className="font-bold text-[#14532d]">Maximum Nutrition</h4>
+                      <p className="text-sm text-gray-600">Harvested at peak vitality for concentrated vitamins and minerals.</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <div className="w-10 h-10 rounded-full bg-[#dcfce7] flex items-center justify-center text-[#15803d] font-bold shrink-0">2</div>
                     <div>
                       <h4 className="font-bold text-[#14532d]">Proprietary Technology</h4>
-                      <p className="text-sm text-gray-600">Advanced cultivation methods for superior quality.</p>
+                      <p className="text-sm text-gray-600">Clean, soil-free cultivation for pure, pesticide-free greens.</p>
                     </div>
                   </div>
                 </div>
@@ -120,7 +120,7 @@ const WhatAreMicrogreens = () => {
               <div className="relative bg-white/60 backdrop-blur-xl border border-white/60 rounded-xl p-8 md:p-12 shadow-2xl">
                 <h3 className="text-3xl font-bold mb-6 text-[#14532d]">Why Choose Mikrogreenz Global?</h3>
                 <p className="text-gray-700 text-lg leading-relaxed mb-8">
-                  We're not just growing microgreens—we're pioneering the future of nutrition. With GMP-certified facilities, proprietary cultivation technology, and a commitment to sustainable innovation, Mikrogreenz Global delivers nutrient-dense superfoods that enhance your health, elevate your dishes, and support a sustainable future.
+                  We're not just growing microgreens—we're pioneering the future of nutrition. With advanced vertical farming, proprietary cultivation technology, and a commitment to sustainable innovation, Mikrogreenz Global delivers organic, nutrient-dense superfoods that enhance your health, elevate your dishes, and support a sustainable future.
                 </p>
                 <Button size="lg" className="bg-[#16a34a] hover:bg-[#15803d] text-white font-bold px-8 shadow-lg hover:shadow-[#16a34a]/50 transition-all rounded-full h-12">
                   Start Your Journey
