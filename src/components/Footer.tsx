@@ -11,6 +11,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-gradient-to-br from-primary via-primary to-primary-dark text-primary-foreground relative overflow-hidden">
+      
       {/* Decorative Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
@@ -21,8 +22,10 @@ const Footer = () => {
       </div>
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
+        
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 py-12 md:py-20">
+          
           {/* Brand Column */}
           <div className="space-y-6 lg:col-span-1">
             <div className="flex items-center gap-3">
@@ -152,6 +155,11 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs md:text-sm text-primary-foreground/60">
             <div className="text-center md:text-left space-y-1">
               <p>© {new Date().getFullYear()} Mikrogreenz Global. All Rights Reserved.</p>
+
+              <p className="text-sm md:text-base font-semibold text-white tracking-wide">
+                FSSAI License No: 22426555000029
+              </p>
+
               <p className="text-[11px] md:text-xs text-primary-foreground/50">
                 Site developed by{" "}
                 <a
@@ -174,6 +182,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
+
       </div>
     </footer>
   );
