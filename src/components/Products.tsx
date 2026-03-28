@@ -227,19 +227,21 @@ const Products = () => {
                 <DialogTrigger asChild>
                   {CardContent}
                 </DialogTrigger>
-                <DialogContent className="sm:max-w-[750px] max-h-[90vh] overflow-y-auto w-[95vw] rounded-[2rem] p-0 overflow-hidden border-0">
-                  <div className={`h-32 relative flex items-end p-6 md:p-8 ${product.lightAccent}`}>
+                <DialogContent className="w-[95vw] sm:max-w-[750px] max-h-[85vh] overflow-y-auto overflow-x-hidden rounded-[1.5rem] md:rounded-[2rem] p-0 border-0 flex flex-col gap-0 shadow-2xl">
+                  {/* Fixed Header */}
+                  <div className={`shrink-0 min-h-[7rem] md:h-32 relative flex items-end p-5 pr-12 md:p-8 md:pr-12 ${product.lightAccent} overflow-hidden rounded-t-[1.5rem] md:rounded-t-[2rem]`}>
                     <div className={`absolute inset-0 opacity-20 bg-pattern`} />
-                    <div className={`absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl opacity-30 ${product.accent} -translate-y-1/2 translate-x-1/2`} />
-                    <DialogTitle className="text-3xl md:text-4xl font-heading font-extrabold flex items-center gap-4 relative z-10 text-slate-900">
-                      <div className={`w-10 h-10 rounded-full ${product.accent} shadow-inner bg-opacity-20 flex items-center justify-center shrink-0`}>
-                        <Leaf className={`w-5 h-5 ${product.textColor}`} />
+                    <div className={`absolute top-0 right-0 w-48 h-48 md:w-64 md:h-64 rounded-full blur-3xl opacity-30 ${product.accent} -translate-y-1/2 translate-x-1/2 pointer-events-none`} />
+                    <DialogTitle className="text-2xl md:text-4xl font-heading font-extrabold flex items-center gap-3 md:gap-4 relative z-10 text-slate-900 leading-tight">
+                      <div className={`w-8 h-8 md:w-10 md:h-10 rounded-full ${product.accent} shadow-inner bg-opacity-20 flex items-center justify-center shrink-0`}>
+                        <Leaf className={`w-4 h-4 md:w-5 md:h-5 ${product.textColor}`} />
                       </div>
-                      {product.name}
+                      <span className="break-words">{product.name}</span>
                     </DialogTitle>
                   </div>
                   
-                  <div className="p-6 md:p-8 grid md:grid-cols-2 gap-8 bg-white">
+                  {/* Scrollable Content */}
+                  <div className="p-5 md:p-8 grid md:grid-cols-2 gap-6 md:gap-8 bg-white relative">
                     {/* Left Column */}
                     <div>
                       <h4 className="font-bold text-lg mb-4 flex items-center gap-2 text-slate-800">
@@ -276,7 +278,7 @@ const Products = () => {
                     </div>
                     
                     {/* Right Column */}
-                    <div className={`rounded-2xl p-6 ${product.lightAccent} border-2 border-white shadow-inner`}>
+                    <div className={`rounded-xl md:rounded-2xl p-5 md:p-6 ${product.lightAccent} border-2 border-white shadow-inner`}>
                       <h4 className="font-bold text-md mb-3 text-slate-800 border-b border-black/5 pb-2">Nutritional Profile</h4>
                       <div className="mb-6 space-y-2">
                         <div className="text-sm">
