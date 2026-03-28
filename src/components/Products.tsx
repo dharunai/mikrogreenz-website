@@ -1,5 +1,7 @@
-import { useEffect, useState, useRef } from "react";
-import { Leaf, ArrowRight, Star } from "lucide-react";
+import React, { useEffect, useState, useRef } from "react";
+import { Leaf, ArrowRight, Star, Info } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { microgreensData } from "@/data/microgreensData";
 import beetrootImg from "@/assets/products/beetroot-microgreens.jpg";
 import radishImg from "@/assets/products/radish-microgreens.jpg";
 import broccoliImg from "@/assets/products/broccoli-microgreens.jpg";
@@ -155,64 +157,172 @@ const Products = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-          {products.map((product, index) => (
-            <div
-              key={index}
-              className="group relative bg-white rounded-[2rem] shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden hover:-translate-y-3 border border-slate-100"
-              style={{
-                opacity: isVisible ? 1 : 0,
-                transform: isVisible ? 'translateY(0)' : 'translateY(40px)',
-                transition: 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
-                transitionDelay: `${index * 100}ms`
-              }}
-            >
-              {/* Card Geometric Banner */}
-              <div className={`absolute top-0 right-0 w-24 h-24 ${product.accent} opacity-5 rounded-bl-[4rem] group-hover:scale-150 transition-transform duration-700 ease-out`} />
+          {products.map((product, index) => {
+            const detail = microgreensData[product.name];
 
-              {/* Image Section */}
-              <div className="relative h-64 overflow-hidden p-4 pb-0">
-                <div className="w-full h-full rounded-t-[1.5rem] overflow-hidden relative shadow-inner">
-                  <div className={`absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent z-10 opacity-60 group-hover:opacity-40 transition-opacity duration-500`} />
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110"
-                  />
+            const CardContent = (
+              <div
+                className={`group relative bg-white rounded-[2rem] shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden hover:-translate-y-3 border border-slate-100 h-full flex flex-col ${detail ? 'cursor-pointer' : ''}`}
+                style={{
+                  opacity: isVisible ? 1 : 0,
+                  transform: isVisible ? 'translateY(0)' : 'translateY(40px)',
+                  transition: 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
+                  transitionDelay: `${index * 100}ms`
+                }}
+              >
+                {/* Card Geometric Banner */}
+                <div className={`absolute top-0 right-0 w-24 h-24 ${product.accent} opacity-5 rounded-bl-[4rem] group-hover:scale-150 transition-transform duration-700 ease-out`} />
 
-                  {/* Floating Action Button */}
-                  <div className="absolute bottom-4 right-4 z-20 translate-y-12 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
-                    <div className={`w-12 h-12 rounded-full bg-white shadow-xl flex items-center justify-center ${product.textColor} hover:scale-110 transition-transform`}>
-                      <ArrowRight className="w-6 h-6" />
+                {/* Image Section */}
+                <div className="relative h-64 overflow-hidden p-4 pb-0 shrink-0">
+                  <div className="w-full h-full rounded-t-[1.5rem] overflow-hidden relative shadow-inner">
+                    <div className={`absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent z-10 opacity-60 group-hover:opacity-40 transition-opacity duration-500`} />
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110"
+                    />
+
+                    {/* Floating Action Button */}
+                    <div className="absolute bottom-4 right-4 z-20 translate-y-12 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
+                      <div className={`w-12 h-12 rounded-full bg-white shadow-xl flex items-center justify-center ${product.textColor} hover:scale-110 transition-transform`}>
+                        {detail ? <Info className="w-6 h-6" /> : <ArrowRight className="w-6 h-6" />}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Content Section */}
+                <div className="p-8 pt-6 relative flex-grow flex flex-col">
+                  <div className={`w-12 h-1.5 rounded-full ${product.accent} mb-4 transform origin-left group-hover:scale-x-150 transition-transform duration-500`} />
+
+                  <h3 className="text-2xl font-bold text-slate-800 mb-3 group-hover:text-primary transition-colors">
+                    {product.name}
+                  </h3>
+
+                  <p className="text-slate-500 leading-relaxed mb-6 text-sm min-h-[40px] flex-grow">
+                    {product.benefit}
+                  </p>
+
+                  {/* Footer / Badge */}
+                  <div className="flex items-center justify-between border-t border-slate-100 pt-5 mt-auto">
+                    <div className={`flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest ${product.textColor}`}>
+                      <Star className="w-3 h-3 fill-current" />
+                      Premium Grade
+                    </div>
+                    <div className="text-slate-300 transform group-hover:rotate-12 transition-transform">
+                      <Leaf className="w-5 h-5" />
                     </div>
                   </div>
                 </div>
               </div>
+            );
 
-              {/* Content Section */}
-              <div className="p-8 pt-6 relative">
-                <div className={`w-12 h-1.5 rounded-full ${product.accent} mb-4 transform origin-left group-hover:scale-x-150 transition-transform duration-500`} />
+            if (!detail) {
+              return <React.Fragment key={index}>{CardContent}</React.Fragment>;
+            }
 
-                <h3 className="text-2xl font-bold text-slate-800 mb-3 group-hover:text-primary transition-colors">
-                  {product.name}
-                </h3>
-
-                <p className="text-slate-500 leading-relaxed mb-6 text-sm min-h-[40px]">
-                  {product.benefit}
-                </p>
-
-                {/* Footer / Badge */}
-                <div className="flex items-center justify-between border-t border-slate-100 pt-5">
-                  <div className={`flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest ${product.textColor}`}>
-                    <Star className="w-3 h-3 fill-current" />
-                    Premium Grade
+            return (
+              <Dialog key={index}>
+                <DialogTrigger asChild>
+                  {CardContent}
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-[750px] max-h-[90vh] overflow-y-auto w-[95vw] rounded-[2rem] p-0 overflow-hidden border-0">
+                  <div className={`h-32 relative flex items-end p-6 md:p-8 ${product.lightAccent}`}>
+                    <div className={`absolute inset-0 opacity-20 bg-pattern`} />
+                    <div className={`absolute top-0 right-0 w-64 h-64 rounded-full blur-3xl opacity-30 ${product.accent} -translate-y-1/2 translate-x-1/2`} />
+                    <DialogTitle className="text-3xl md:text-4xl font-heading font-extrabold flex items-center gap-4 relative z-10 text-slate-900">
+                      <div className={`w-10 h-10 rounded-full ${product.accent} shadow-inner bg-opacity-20 flex items-center justify-center shrink-0`}>
+                        <Leaf className={`w-5 h-5 ${product.textColor}`} />
+                      </div>
+                      {product.name}
+                    </DialogTitle>
                   </div>
-                  <div className="text-slate-300 transform group-hover:rotate-12 transition-transform">
-                    <Leaf className="w-5 h-5" />
+                  
+                  <div className="p-6 md:p-8 grid md:grid-cols-2 gap-8 bg-white">
+                    {/* Left Column */}
+                    <div>
+                      <h4 className="font-bold text-lg mb-4 flex items-center gap-2 text-slate-800">
+                        <Leaf className={`w-5 h-5 ${product.textColor}`} /> 
+                        Top Health Benefits
+                      </h4>
+                      <ul className="space-y-3 mb-8">
+                        {detail.benefits.map((b, i) => {
+                          const [title, ...desc] = b.split(':');
+                          return (
+                            <li key={i} className="text-sm flex items-start gap-3">
+                              <span className={`mt-1 shrink-0 ${product.textColor}`}>•</span> 
+                              <span>
+                                <strong className="text-slate-700">{title}</strong>
+                                {desc.length > 0 && <span className="text-slate-500">:{desc.join(':')}</span>}
+                              </span>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                      
+                      <h4 className="font-bold text-lg mb-4 flex items-center gap-2 text-slate-800">
+                        <Star className={`w-5 h-5 ${product.textColor}`} /> 
+                        Key Advantages
+                      </h4>
+                      <ul className="space-y-3">
+                        {detail.advantages.map((a, i) => (
+                          <li key={i} className="text-sm flex items-start gap-3">
+                            <span className={`mt-1 shrink-0 ${product.textColor}`}>•</span> 
+                            <span className="text-slate-600">{a}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    
+                    {/* Right Column */}
+                    <div className={`rounded-2xl p-6 ${product.lightAccent} border-2 border-white shadow-inner`}>
+                      <h4 className="font-bold text-md mb-3 text-slate-800 border-b border-black/5 pb-2">Nutritional Profile</h4>
+                      <div className="mb-6 space-y-2">
+                        <div className="text-sm">
+                          <span className="font-bold text-slate-700">Vitamins:</span> <span className="text-slate-600">{detail.vitamins.join(", ")}</span>
+                        </div>
+                        <div className="text-sm">
+                          <span className="font-bold text-slate-700">Minerals:</span> <span className="text-slate-600">{detail.minerals.join(", ")}</span>
+                        </div>
+                      </div>
+                      
+                      {detail.keyCompounds && detail.keyCompounds.length > 0 && (
+                        <>
+                          <h4 className="font-bold text-md mb-3 text-slate-800 border-b border-black/5 pb-2">Key Compounds</h4>
+                          <div className="space-y-3 mb-6">
+                            {detail.keyCompounds.map((kc, i) => (
+                              <div key={i} className="text-sm">
+                                <span className="font-bold text-slate-700 block">{kc.name}</span> 
+                                <span className="text-slate-600">{kc.description}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </>
+                      )}
+                      
+                      <h4 className="font-bold text-md mb-3 text-slate-800 border-b border-black/5 pb-2">Daily Consumption</h4>
+                      <div className="text-sm flex flex-col gap-2">
+                        <div>
+                          <span className="font-bold text-slate-700">Amount:</span> <span className="text-slate-600">{detail.consumption.amount}</span>
+                        </div>
+                        <div>
+                          <span className="font-bold text-slate-700 block mb-1">Best Ways to Use:</span> 
+                          <div className="flex flex-wrap gap-2">
+                            {detail.consumption.waysToUse.map((way, wId) => (
+                              <span key={wId} className="bg-white px-2 py-1 rounded-md text-xs font-medium shadow-sm text-slate-600">
+                                {way}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </div>
-          ))}
+                </DialogContent>
+              </Dialog>
+            );
+          })}
         </div>
       </div>
     </section>
